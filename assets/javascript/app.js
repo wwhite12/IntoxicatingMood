@@ -4,7 +4,7 @@
  * 
  */
 
-//picture submition logic
+//picture submition logic ~Arianna Sanson
 
 let file = document.getElementById("fileInput");
 let picture
@@ -19,7 +19,7 @@ file.onchange = function () {
     }
 };
 function submitPicture (picture) {
-    //matt coming up with this. will nest once complete?
+    //matt coming up with this. will nest once complete? Just console.logging picture name for now
     console.log("picture submited")
     console.log(picture)
 }
