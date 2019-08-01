@@ -3,7 +3,7 @@
  * @author Max Coursey
  * 
  */
- 
+
 
 //Face++ API key and secret as required by API
 const API_KEY = "api_key=5WD1Tc70yflyZBAXRMHZzg1p6lUF0Nbm"
@@ -14,7 +14,11 @@ const queryFaceURL = "https://api-us.faceplusplus.com/facepp/v3/detect/?"  //TOD
 
 let img_URL = "" //TODO temp variable for file upload URL if needed
 let imgFile = "" //TODO temp file name of uploaded image
+let ingredient = "" //TODO parameter to pass to cocktail DB ajax query
+let idDrink = "" //TODO ID pulled from DB based on the main base alchohol
 
+const queryIngredientURL = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=" + ingredient;
+const queryDrinkURL = "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=16943" + idDrink
 
 //intial call to cocktail DB
 $.ajax({
