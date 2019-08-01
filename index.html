@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+
+    <title>Title</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="./assets/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="./assets/css/bulma.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+    <div id="userInput">
+        <div class="file has-name is-boxed">
+            <label class="file-label">
+                <input class="file-input" type="file" name="resume" id="fileInput">
+                <span class="file-cta">
+                    <span class="file-icon">
+                        <i class="fas fa-upload"></i>
+                    </span>
+                    <span class="file-label" id="file">
+                        Choose a picture…
+                    </span>
+                </span>
+                <span class="file-name" id="filename">
+                    browse
+                </span>
+            </label>
+        </div>
+        <span><button class="button" id="pictureSubmit">Submit</button></span>
+    </div>
+    <script type="text/javascript">
+        let file = document.getElementById("fileInput");
+        let picture
+
+        file.onchange = function () {
+            if (file.files.length > 0) {
+
+                document.getElementById('filename').innerHTML = file.files[0].name;
+                picture = file.files[0].name
+                console.log(picture)
+                $("#pictureSubmit").on("click", function(){submitPicture(picture)})
+            }
+        };
+        function submitPicture (picture) {
+            //matt coming up with this
+            console.log("picture submited")
+            console.log(picture)
+        }
+
+    </script>
+</body>
+
+</html>
