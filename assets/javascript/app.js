@@ -3,7 +3,26 @@
  * @author Max Coursey
  * 
  */
- 
+
+//picture submition logic ~Arianna Sanson
+
+let file = document.getElementById("fileInput");
+let picture
+
+file.onchange = function () {
+    if (file.files.length > 0) {
+
+        document.getElementById('filename').innerHTML = file.files[0].name;
+        picture = file.files[0].name
+        console.log(picture)
+        $("#pictureSubmit").on("click", function(){submitPicture(picture)})
+    }
+};
+function submitPicture (picture) {
+    //matt coming up with this. will nest once complete? Just console.logging picture name for now
+    console.log("picture submited")
+    console.log(picture)
+}
 
 //Face++ API key and secret as required by API
 const API_KEY = "api_key=5WD1Tc70yflyZBAXRMHZzg1p6lUF0Nbm"
