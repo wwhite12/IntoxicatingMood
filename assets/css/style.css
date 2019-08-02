@@ -1,0 +1,35 @@
+* {
+    box-sizing: border-box;
+}
+
+.photo {
+    padding-top: 250px;
+    
+}
+
+.title {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+    
+}
+
+.face {
+    clear: both; 
+    overflow: hidden;
+    height: 960px;
+  }
+
+.drinks {
+    width: 1300px;
+    margin: 0 auto;
+    padding: 5px 40px 20px 40px;
+}
+
+.title {
+    text-align: center;
+    height: 200px;
+    
+}
