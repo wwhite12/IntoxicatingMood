@@ -8,22 +8,36 @@
 let file = document.getElementById("fileInput");
 let picture
 
-file.onchange = function () {
-    if (file.files.length > 0) {
+file.onchange = function () {previewFile()};
 
-        document.getElementById('filename').innerHTML = file.files[0].name;
-        picture = file.files[0].name
-        console.log(picture)
-        $("#pictureSubmit").on("click", function () { submitPicture(picture) })
 
-    }
-};
 function submitPicture(picture) {
     //matt coming up with this. will nest once complete? Just console.logging picture name for now
     console.log("picture submited")
-    console.log(picture)
-    document.getElementById("userPicture").src = picture; 
+    console.log(picture) // logs img name only to console
+    
 }
+
+
+function previewFile(){
+    var preview = document.querySelector('img'); 
+    var file    = document.querySelector('input[type=file]').files[0]; 
+    var reader  = new FileReader();
+
+    reader.onloadend = function () {
+        preview.src = reader.result;
+        console.log(reader.result) //logs img as url to console
+        $("#pictureSubmit").on("click", function () { submitPicture(reader.result) })
+    }
+
+    if (file) {
+        reader.readAsDataURL(file); //reads the data as a URL
+    } else {
+        preview.src = "";
+    }
+}
+
+
 
 //Face++ API query and array creation
 let baseAlcohol; //base alcohol that will be included at the end of queryDrinkURL
@@ -43,7 +57,7 @@ $.ajax({
         "X-RapidAPI-Key": "d1d151fcf6msha9240c9ffb25a4bp14a1ddjsn58db10897e38"
     }
 }).then(function (response) {
-    console.log(response.drinks[0].strDrink);
+    //console.log(response.drinks[0].strDrink);
 });
 
 
@@ -80,9 +94,9 @@ $.ajax(settings).done(function (response) {
         return b[1] - a[1];
     });
 
-    console.log(sortedEmotions);
-    console.log("Primary: " + sortedEmotions[0][0] + ": " + sortedEmotions[0][1]);
-    console.log("Secondary: " + sortedEmotions[1][0] + ": " + sortedEmotions[1][1]);
+    //console.log(sortedEmotions);
+    //console.log("Primary: " + sortedEmotions[0][0] + ": " + sortedEmotions[0][1]);
+    //console.log("Secondary: " + sortedEmotions[1][0] + ": " + sortedEmotions[1][1]);
 
 });
 
