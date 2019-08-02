@@ -98,23 +98,24 @@ const emotionKey = {
 
 
 
-
-//test function for removing hidden class-- tested: after clicking submit, three drink cards now become visible
+//on click function, triggers:reveals hidden cards with random drink choices based on base alcohols
 $("#pictureSubmit").on("click",function(){
+    //selected user emotions----will replace later with face API response
     let inputOne = $("#emotionOne").val();
     let inputTwo = $("#emotionTwo").val();
     let inputThree = $("#emotionThree").val();
+    //title of cards is selected emotions
+    $("#moodNamePrimary").text(inputOne);
+    $("#moodName2").text(inputTwo);
+    $("#moodName3").text(inputThree);
 
-        console.log(inputOne);
-        $("#moodNamePrimary").text(inputOne);
-        $("#moodName2").text(inputTwo);
-        $("#moodName3").text(inputThree);
+    //baseAlcohols declared--- will be replaced later with link between returned emotions and base alcohols
+    let baseAlcohol1 = emotionKey[$('#emotionOne').val()];
+    let baseAlcohol2 = emotionKey[$("#emotionTwo").val()];
+    let baseAlcohol3 = emotionKey[$("#emotionThree").val()];
 
-    let baseAlcohol1 = "tequila";
-    let baseAlcohol2 = "rum";
-    let baseAlcohol3 = "gin";
-
-    const queryDrinkURL1 = "https://the-cocktail-db.p.rapidapi.com/filter.php?i=" + baseAlcohol1;  //NOTE - the "1" is a temp developer key need to request new key if we publish to app store
+    //must have three different cocktail API queries for each base alcohol
+    const queryDrinkURL1 = "https://the-cocktail-db.p.rapidapi.com/filter.php?i=" + baseAlcohol1;  
     const queryDrinkURL2 = "https://the-cocktail-db.p.rapidapi.com/filter.php?i=" + baseAlcohol2;
     const queryDrinkURL3 = "https://the-cocktail-db.p.rapidapi.com/filter.php?i=" + baseAlcohol3;
     
@@ -128,15 +129,15 @@ $("#pictureSubmit").on("click",function(){
             }
         }).then(function (response) {
            //variables for random drink one
-           let testDrink1 = response.drinks[Math.floor(Math.random() * (response.drinks.length - 0 + 1) ) + 0];
+           let testDrink1 = response.drinks[Math.floor(Math.random() * ((response.drinks.length-1) - 0 + 1) ) + 0];
            let testDrinkImg = testDrink1.strDrinkThumb;
            let imgLocation = $("<img>").attr("src",testDrinkImg)
             //variables for random drink two
-           let testDrink2 = response.drinks[Math.floor(Math.random() * (response.drinks.length - 0 + 1) ) + 0];
+           let testDrink2 = response.drinks[Math.floor(Math.random() * ((response.drinks.length-1) - 0 + 1) ) + 0];
            let testDrinkImg2 = testDrink2.strDrinkThumb;
            let imgLocation2 = $("<img>").attr("src",testDrinkImg2)
             //variables for random drink three
-           let testDrink3 = response.drinks[Math.floor(Math.random() * (response.drinks.length - 0 + 1) ) + 0];
+           let testDrink3 = response.drinks[Math.floor(Math.random() * ((response.drinks.length-1) - 0 + 1) ) + 0];
            let testDrinkImg3 = testDrink3.strDrinkThumb;
            let imgLocation3 = $("<img>").attr("src",testDrinkImg3)
             //random drink one to DOM
@@ -146,7 +147,7 @@ $("#pictureSubmit").on("click",function(){
             $("#drinkOneRandTwo").text(testDrink2.strDrink);
             $("#drinkOneRandTwo").append(imgLocation2);
             //random drink three to DOM
-            $("#drinkOneRandThree").text(response.drinks[Math.floor(Math.random() * (response.drinks.length - 0 + 1) ) + 0].strDrink);
+            $("#drinkOneRandThree").text(testDrink3.strDrink);
             $("#drinkOneRandThree").append(imgLocation3);
         });
 
@@ -179,7 +180,7 @@ $("#pictureSubmit").on("click",function(){
             $("#drinkTwoRandTwo").text(testDrink2.strDrink);
             $("#drinkTwoRandTwo").append(imgLocation2);
             //random drink three to DOM
-            $("#drinkTwoRandThree").text(response.drinks[Math.floor(Math.random() * (response.drinks.length - 0 + 1) ) + 0].strDrink);
+            $("#drinkTwoRandThree").text(testDrink3.strDrink);
             $("#drinkTwoRandThree").append(imgLocation3);
 
         });
@@ -213,12 +214,12 @@ $("#pictureSubmit").on("click",function(){
             $("#drinkThreeRandTwo").text(testDrink2.strDrink);
             $("#drinkThreeRandTwo").append(imgLocation2);
             //random drink three to DOM
-            $("#drinkThreeRandThree").text(response.drinks[Math.floor(Math.random() * (response.drinks.length - 0 + 1) ) + 0].strDrink);
+            $("#drinkThreeRandThree").text(testDrink3.strDrink);
             $("#drinkThreeRandThree").append(imgLocation3);
 
         });
         
-    
+    //reveals hidden cards with above information
     $(".d-none").removeClass("d-none");
 })
 
