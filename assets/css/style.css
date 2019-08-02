@@ -18,6 +18,7 @@
     z-index: 1030;
     background: rgba(0, 0, 0, 0.651);;
     box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+
     
 }
 
@@ -32,6 +33,7 @@
     margin: 0 auto;
     padding: 5px 40px 20px 40px;
 }
+
 
 
 
@@ -52,3 +54,10 @@
     background-size: cover;
     box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
 }
+
+#spacer {
+    height:200px;
+    width: 100%;
+}
+
+
