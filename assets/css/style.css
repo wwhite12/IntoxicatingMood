@@ -8,11 +8,17 @@
 }
 
 .title {
+    text-align: center;
+    height: 200px;
     position: fixed;
+    color: white;
     top: 0;
     right: 0;
     left: 0;
     z-index: 1030;
+    background: rgba(0, 0, 0, 0.651);;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+
     
 }
 
@@ -22,14 +28,36 @@
     height: 960px;
   }
 
-.drinks {
+.drink {
     width: 1300px;
     margin: 0 auto;
     padding: 5px 40px 20px 40px;
 }
 
-.title {
-    text-align: center;
-    height: 200px;
-    
+
+
+
+.button-div {
+    margin: 0 auto;
 }
+
+.back {
+    background: black;
+    margin-bottom: 500px;
+    margin-top: -30px;
+
+}
+
+.background {
+    background-image: url("http://tequilacowboy.com/wp-content/uploads/2015/11/bg-wood.jpg");
+	background-repeat: no-repeat;
+    background-size: cover;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+}
+
+#spacer {
+    height:200px;
+    width: 100%;
+}
+
+
