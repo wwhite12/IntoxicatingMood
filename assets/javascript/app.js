@@ -15,10 +15,10 @@ file.onchange = function () {
         document.getElementById('filename').innerHTML = file.files[0].name;
         picture = file.files[0].name
         console.log(picture)
-        $("#pictureSubmit").on("click", function(){submitPicture(picture)})
+        $("#pictureSubmit").on("click", function () { submitPicture(picture) })
     }
 };
-function submitPicture (picture) {
+function submitPicture(picture) {
     //matt coming up with this. will nest once complete? Just console.logging picture name for now
     console.log("picture submited")
     console.log(picture)
@@ -29,7 +29,7 @@ const API_KEY = "api_key=5WD1Tc70yflyZBAXRMHZzg1p6lUF0Nbm"
 const API_SECRET = "api_secret=RvXCsEc7vf6xZFr-q1h1KH_F0hJ9vKzm"
 let baseAlcohol; //base alcohol that will be included at the end of queryDrinkURL
 
-const queryDrinkURL = "https://the-cocktail-db.p.rapidapi.com/filter.php?i="+ baseAlcohol;  //NOTE - the "1" is a temp developer key need to request new key if we publish to app store
+const queryDrinkURL = "https://the-cocktail-db.p.rapidapi.com/filter.php?i=" + baseAlcohol;  //NOTE - the "1" is a temp developer key need to request new key if we publish to app store
 const queryFaceURL = "https://api-us.faceplusplus.com/facepp/v3/detect/?"  //TODO not sure why this is not working right now - getting API NOT FOUND 404 error
 
 let img_URL = "" //TODO temp variable for file upload URL if needed
@@ -43,7 +43,7 @@ $.ajax({
     headers: {
         "X-RapidAPI-Host": "the-cocktail-db.p.rapidapi.com",
         "X-RapidAPI-Key": "d1d151fcf6msha9240c9ffb25a4bp14a1ddjsn58db10897e38"
-      }
+    }
 }).then(function (response) {
     console.log(response.drinks[0].strDrink);
 });
@@ -69,3 +69,31 @@ $.ajax({
 
 
 
+//Javascript for smooth-scroll 
+$('a[href*="#"]')
+    .not('[href="#"]')
+    .not('[href="#0"]')
+    .click(function (event) {
+        if (
+            location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '')
+            &&
+            location.hostname == this.hostname
+        ) {
+            var target = $(this.hash);
+            target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+            if (target.length) {
+                event.preventDefault();
+                $('html, body').animate({
+                    scrollTop: target.offset().top
+                }, 1000, function () {
+                    var $target = $(target);
+                    $target.focus();
+                    if ($target.is(":focus")) {
+                        return false;
+                    } else {
+                        $target.attr('tabindex', '-1');
+                    };
+                });
+            }
+        }
+    });
