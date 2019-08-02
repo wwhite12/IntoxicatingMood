@@ -84,9 +84,88 @@ $.ajax(settings).done(function (response) {
 
 });
 
+//emotionKey-object linking emotions to base alcohols
+
+const emotionKey = {
+    anger: "vodka",
+    disgust: "wine",
+    fear: "tequila",
+    happiness: "rum",
+    neutral: "gin",
+    sadness:"whiskey",
+    surprise: "champagne"
+};
+
+
+
 
 //test function for removing hidden class-- tested: after clicking submit, three drink cards now become visible
 $("#pictureSubmit").on("click",function(){
+    let inputOne = $("#emotionOne").val();
+    let inputTwo = $("#emotionTwo").val();
+    let inputThree = $("#emotionThree").val();
+
+        console.log(inputOne);
+        $("#moodNamePrimary").text(inputOne);
+        $("#moodName2").text(inputTwo);
+        $("#moodName3").text(inputThree);
+
+    let baseAlcohol1 = "tequila";
+    let baseAlcohol2 = "rum";
+    let baseAlcohol3 = "gin";
+
+    const queryDrinkURL1 = "https://the-cocktail-db.p.rapidapi.com/filter.php?i=" + baseAlcohol1;  //NOTE - the "1" is a temp developer key need to request new key if we publish to app store
+    const queryDrinkURL2 = "https://the-cocktail-db.p.rapidapi.com/filter.php?i=" + baseAlcohol2;
+    const queryDrinkURL3 = "https://the-cocktail-db.p.rapidapi.com/filter.php?i=" + baseAlcohol3;
+        $.ajax({
+            url: queryDrinkURL1,
+            method: "GET",
+            headers: {
+                "X-RapidAPI-Host": "the-cocktail-db.p.rapidapi.com",
+                "X-RapidAPI-Key": "d1d151fcf6msha9240c9ffb25a4bp14a1ddjsn58db10897e38"
+            }
+        }).then(function (response) {
+           // console.log(response.drinks[0].strDrink);
+           //console.log(response.drinks[Math.floor(Math.random() * (drinks.length - 0 + 1) ) + 0].strDrink);
+            $("#drinkOneRandOne").text(response.drinks[Math.floor(Math.random() * (response.drinks.length - 0 + 1) ) + 0].strDrink);
+            $("#drinkOneRandTwo").text(response.drinks[Math.floor(Math.random() * (response.drinks.length - 0 + 1) ) + 0].strDrink);
+            $("#drinkOneRandThree").text(response.drinks[Math.floor(Math.random() * (response.drinks.length - 0 + 1) ) + 0].strDrink);
+
+        });
+
+        $.ajax({
+            url: queryDrinkURL2,
+            method: "GET",
+            headers: {
+                "X-RapidAPI-Host": "the-cocktail-db.p.rapidapi.com",
+                "X-RapidAPI-Key": "d1d151fcf6msha9240c9ffb25a4bp14a1ddjsn58db10897e38"
+            }
+        }).then(function (response) {
+           // console.log(response.drinks[0].strDrink);
+           //console.log(response.drinks[Math.floor(Math.random() * (drinks.length - 0 + 1) ) + 0].strDrink);
+            $("#drinkTwoRandOne").text(response.drinks[Math.floor(Math.random() * (response.drinks.length - 0 + 1) ) + 0].strDrink);
+            $("#drinkTwoRandTwo").text(response.drinks[Math.floor(Math.random() * (response.drinks.length - 0 + 1) ) + 0].strDrink);
+            $("#drinkTwoRandThree").text(response.drinks[Math.floor(Math.random() * (response.drinks.length - 0 + 1) ) + 0].strDrink);
+
+        });
+
+        $.ajax({
+            url: queryDrinkURL3,
+            method: "GET",
+            headers: {
+                "X-RapidAPI-Host": "the-cocktail-db.p.rapidapi.com",
+                "X-RapidAPI-Key": "d1d151fcf6msha9240c9ffb25a4bp14a1ddjsn58db10897e38"
+            }
+        }).then(function (response) {
+           // console.log(response.drinks[0].strDrink);
+           //console.log(response.drinks[Math.floor(Math.random() * (drinks.length - 0 + 1) ) + 0].strDrink);
+            $("#drinkThreeRandOne").text(response.drinks[Math.floor(Math.random() * (response.drinks.length - 0 + 1) ) + 0].strDrink);
+            $("#drinkThreeRandTwo").text(response.drinks[Math.floor(Math.random() * (response.drinks.length - 0 + 1) ) + 0].strDrink);
+            $("#drinkThreeRandThree").text(response.drinks[Math.floor(Math.random() * (response.drinks.length - 0 + 1) ) + 0].strDrink);
+
+        });
+        
+    
     $(".d-none").removeClass("d-none");
 })
 

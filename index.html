@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href="./assets/css/reset.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
-    <link rel="stylesheet" type="text/css" href="style-green.css">
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="./assets/css/bulma.css" />
 </head>
@@ -55,7 +55,47 @@
             <span><button class="button" id="pictureSubmit">Submit</button></span>
         </div>
 
+        <div class="form-group" >
+            <label for="exampleFormControlSelect1">Select Emotion</label>
+            <select class="form-control" id="emotionOne">
+                <option>sadness</option>
+                <option>fear</option>
+                <option>disgust</option>
+                <option>happiness</option>
+                <option>surprise</option>
+                <option>neutral</option>
+                <option>anger</option>
+            </select>
+          </div>
+
+          <div class="form-group" >
+            <label for="exampleFormControlSelect1">Select Emotion</label>
+            <select class="form-control" id="emotionTwo">
+                <option>sadness</option>
+                <option>fear</option>
+                <option>disgust</option>
+                <option>happiness</option>
+                <option>surprise</option>
+                <option>neutral</option>
+                <option>anger</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="exampleFormControlSelect1">Select Emotion</label>
+            <select class="form-control" id="emotionThree">
+                <option>sadness</option>
+                <option>fear</option>
+                <option>disgust</option>
+                <option>happiness</option>
+                <option>surprise</option>
+                <option>neutral</option>
+                <option>anger</option>
+            </select>
+          </div>
         <hr>
+
+        
 
         <!--Drink recommendation 1-->
         <div class="row justify-content-center justify-content-around drinks d-none">
@@ -63,20 +103,17 @@
                 <div class="card drink" style="width: 18rem;">
                     <img src="..." class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">Mood 1</h5>
+                        <h5 class="card-title" id= "moodNamePrimary">Mood 1</h5>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of
                             the
                             card's content.</p>
                     </div>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item"></li>
-                        <li class="list-group-item"></li>
-                        <li class="list-group-item"></li>
+                        <li class="list-group-item" id = "drinkOneRandOne">drink</li>
+                        <li class="list-group-item" id = "drinkOneRandTwo">drink</li>
+                        <li class="list-group-item" id = "drinkOneRandThree">drink</li>
                     </ul>
-                    <div class="card-body">
-                        <a href="#" class="card-link">Card link</a>
-                        <a href="#" class="card-link">Another link</a>
-                    </div>
+                    
                 </div>
             </div>
             <!-- </div> -->
@@ -87,20 +124,17 @@
                 <div class="card drink" style="width: 18rem;">
                     <img src="..." class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">Mood 2</h5>
+                        <h5 class="card-title" id ="moodName2">Mood 2</h5>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of
                             the
                             card's content.</p>
                     </div>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item"></li>
-                        <li class="list-group-item"></li>
-                        <li class="list-group-item"></li>
+                        <li class="list-group-item" id = "drinkTwoRandOne"></li>
+                        <li class="list-group-item" id = "drinkTwoRandTwo"></li>
+                        <li class="list-group-item" id = "drinkTwoRandThree"></li>
                     </ul>
-                    <div class="card-body">
-                        <a href="#" class="card-link">Card link</a>
-                        <a href="#" class="card-link">Another link</a>
-                    </div>
+                    
                 </div>
             </div>
             <!-- </div> -->
@@ -111,20 +145,17 @@
                 <div class="card drink" style="width: 18rem;">
                     <img src="..." class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">Mood 3</h5>
+                        <h5 class="card-title" id = "moodName3">Mood 3</h5>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of
                             the
                             card's content.</p>
                     </div>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item"></li>
-                        <li class="list-group-item"></li>
-                        <li class="list-group-item"></li>
+                        <li class="list-group-item" id = "drinkThreeRandOne"></li>
+                        <li class="list-group-item" id = "drinkThreeRandTwo"></li>
+                        <li class="list-group-item" id = "drinkThreeRandThree"></li>
                     </ul>
-                    <div class="card-body">
-                        <a href="#" class="card-link">Card link</a>
-                        <a href="#" class="card-link">Another link</a>
-                    </div>
+                    
                 </div>
             </div>
         </div>
@@ -135,6 +166,7 @@
 
     </footer>
     <script type="text/javascript" src="./assets/javascript/app.js"></script>
+
 </body>
 
 </html>
