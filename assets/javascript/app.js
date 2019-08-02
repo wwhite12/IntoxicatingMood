@@ -36,7 +36,7 @@ let img_URL = "" //TODO temp variable for file upload URL if needed
 let imgFile = "" //TODO temp file name of uploaded image
 
 
-//intial call to cocktail DB--RIGHT NOW ONLY CONSOLE LOGS FIRST COCKTAIL FROM DEFINED DRINK, WILL NEED LOOP LATER
+//intial call to cocktail DB--RIGHT NOW ONLY CONSOLE LOGS FIRST COCKTAIL FROM DEFINED DRINK
 $.ajax({
     url: queryDrinkURL,
     method: "GET",
