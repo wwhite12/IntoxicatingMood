@@ -15,12 +15,14 @@ file.onchange = function () {
         picture = file.files[0].name
         console.log(picture)
         $("#pictureSubmit").on("click", function () { submitPicture(picture) })
+
     }
 };
 function submitPicture(picture) {
     //matt coming up with this. will nest once complete? Just console.logging picture name for now
     console.log("picture submited")
     console.log(picture)
+    document.getElementById("userPicture").src = picture; 
 }
 
 //Face++ API query and array creation
