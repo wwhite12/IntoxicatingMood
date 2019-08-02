@@ -13,6 +13,8 @@
     right: 0;
     left: 0;
     z-index: 1030;
+    text-align: center;
+    height: 200px;
     
 }
 
@@ -28,8 +30,8 @@
     padding: 5px 40px 20px 40px;
 }
 
-.title {
-    text-align: center;
-    height: 200px;
-    
+#spacer {
+    height:200px;
+    width: 100%;
 }
+
