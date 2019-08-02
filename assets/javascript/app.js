@@ -53,6 +53,7 @@ var form = new FormData();
 form.append("api_key", "5WD1Tc70yflyZBAXRMHZzg1p6lUF0Nbm");
 form.append("api_secret", "RvXCsEc7vf6xZFr-q1h1KH_F0hJ9vKzm");
 form.append("image_url", "https://images-na.ssl-images-amazon.com/images/I/61Wo915nuTL._SL1000_.jpg");
+//form.append("image_file", "cage.jpg")
 form.append("return_attributes", "emotion");
 // form.append("return_attributes", "gender"); //API seems to only take one attribute section as an input
 
@@ -83,6 +84,7 @@ $.ajax(settings).done(function (response) {
     console.log("Secondary: " + sortedEmotions[1][0] + ": " + sortedEmotions[1][1]);
 
 });
+sortEmotions = [];
 
 
 //JavaScript for Cocktail API- William White
