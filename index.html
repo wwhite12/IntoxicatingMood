@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +11,7 @@
     <link rel="stylesheet" type="text/css" href="./assets/css/reset.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
-    <link rel="stylesheet" type="text/css" href="style-green.css">
+    <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="./assets/css/bulma.css" />
 </head>
@@ -29,13 +30,17 @@
                 </div>
             </div>
         </div>
+        <div id= "spacer"></div>
     </header>
 
 
     <main>
 
         <!--Submit Photo Here-->
-        <div id="userInput">
+        <div class="row" id="userInput">
+            <figure class="image is-128x128">
+                <img id="userPicture" src="https://bulma.io/images/placeholders/128x128.png">
+            </figure>
             <div class="file has-name is-boxed">
                 <label class="file-label">
                     <input class="file-input" type="file" name="resume" id="fileInput">
@@ -58,7 +63,7 @@
         <hr>
 
         <!--Drink recommendation 1-->
-        <div class="row justify-content-center justify-content-around drinks">
+        <div class="row justify-content-center justify-content-around drinks d-none">
             <div class="column">
                 <div class="card drink" style="width: 18rem;">
                     <img src="..." class="card-img-top" alt="...">

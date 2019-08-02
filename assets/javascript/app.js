@@ -15,12 +15,14 @@ file.onchange = function () {
         picture = file.files[0].name
         console.log(picture)
         $("#pictureSubmit").on("click", function () { submitPicture(picture) })
+
     }
 };
 function submitPicture(picture) {
     //matt coming up with this. will nest once complete? Just console.logging picture name for now
     console.log("picture submited")
     console.log(picture)
+    document.getElementById("userPicture").src = picture; 
 }
 
 //Face++ API query and array creation
@@ -32,7 +34,7 @@ let img_URL = "" //TODO temp variable for file upload URL if needed
 let imgFile = "" //TODO temp file name of uploaded image
 
 
-//intial call to cocktail DB--RIGHT NOW ONLY CONSOLE LOGS FIRST COCKTAIL FROM DEFINED DRINK, WILL NEED LOOP LATER
+//intial call to cocktail DB--RIGHT NOW ONLY CONSOLE LOGS FIRST COCKTAIL FROM DEFINED DRINK
 $.ajax({
     url: queryDrinkURL,
     method: "GET",
@@ -87,8 +89,10 @@ $.ajax(settings).done(function (response) {
 sortEmotions = [];
 
 
-//JavaScript for Cocktail API- William White
-
+//test function for removing hidden class-- tested: after clicking submit, three drink cards now become visible
+$("#pictureSubmit").on("click",function(){
+    $(".d-none").removeClass("d-none");
+})
 
 
 
