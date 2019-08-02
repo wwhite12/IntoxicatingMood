@@ -31,6 +31,22 @@ function previewFile(){
     } else {
         preview.src = "";
     }
+
+};
+//Merged these two submitPicture functions, didn't delete one b/c wasn't sure which one was needed
+function submitPicture(picture) {
+    //matt coming up with this. will nest once complete? Just console.logging picture name for now
+
+
+    }
+};
+function submitPicture(picture) {   //TODO (MAX) - can we delete this entire function?
+    //max coming up with this. will nest once complete? Just console.logging picture name for now
+
+    console.log("picture submited")
+    console.log(picture)
+    document.getElementById("userPicture").src = picture;
+
 }
 
 
@@ -39,6 +55,9 @@ function previewFile(){
 let baseAlcohol; //base alcohol that will be included at the end of queryDrinkURL
 
 const queryDrinkURL = "https://the-cocktail-db.p.rapidapi.com/filter.php?i=" + baseAlcohol;  //NOTE - the "1" is a temp developer key need to request new key if we publish to app store
+
+const queryFaceURL = "https://api-us.faceplusplus.com/facepp/v3/detect/?"  //TODO not sure why this is not working right now - getting API NOT FOUND 404 error
+
 
 let img_URL = "" //TODO temp variable for file upload URL if needed
 let imgFile = "" //TODO temp file name of uploaded image
@@ -117,8 +136,42 @@ $.ajax(settings).done(function (response) {
 });
 };
 
-sortEmotions = [];
+
+//Javascript for smooth-scroll 
+$('a[href*="#"]')
+    .not('[href="#"]')
+    .not('[href="#0"]')
+    .click(function (event) {
+        if (
+            location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '')
+            &&
+            location.hostname == this.hostname
+        ) {
+            var target = $(this.hash);
+            target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+            if (target.length) {
+                event.preventDefault();
+                $('html, body').animate({
+                    scrollTop: target.offset().top
+                }, 1000, function () {
+                    var $target = $(target);
+                    $target.focus();
+                    if ($target.is(":focus")) {
+                        return false;
+                    } else {
+                        $target.attr('tabindex', '-1');
+                    };
+                });
+            }
+        }
+    });
+
+
 //test function for removing hidden class-- tested: after clicking submit, three drink cards now become visible
 $("#pictureSubmit").on("click", function () {
-$(".d-none").removeClass("d-none");
+
+    $(".d-none").removeClass("d-none");
 });
+
+
+
