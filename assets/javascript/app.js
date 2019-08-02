@@ -13,8 +13,8 @@ file.onchange = function () {previewFile()};
 
 function submitPicture(picture) {
     //matt coming up with this. will nest once complete? Just console.logging picture name for now
-    console.log("picture submited")
-    console.log(picture) // logs img name only to console
+    //console.log("picture submited")
+    //console.log(picture) // logs img as url to console
     
 }
 
@@ -26,7 +26,7 @@ function previewFile(){
 
     reader.onloadend = function () {
         preview.src = reader.result;
-        console.log(reader.result) //logs img as url to console
+        //console.log(reader.result) //logs img as url to console
         $("#pictureSubmit").on("click", function () { submitPicture(reader.result) })
     }
 
