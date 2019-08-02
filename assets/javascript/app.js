@@ -62,8 +62,10 @@ $.ajax({
 
 
 
-//JavaScript for Cocktail API- William White
-
+//test function for removing hidden class-- tested: after clicking submit, three drink cards now become visible
+$("#pictureSubmit").on("click",function(){
+    $(".d-none").removeClass("d-none");
+})
 
 
 
