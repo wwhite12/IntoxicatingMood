@@ -8,15 +8,30 @@
 let file = document.getElementById("fileInput");
 let picture
 
-file.onchange = function () {
-    if (file.files.length > 0) {
+$("#fileInput").change ( function (e) {
+    //console.log(e.target.files[0])
+    $("#pictureSubmit").on("click", function () { submitPicture(e.target.files[0]) })
+    previewFile()});
 
-        document.getElementById('filename').innerHTML = file.files[0].name;
-        picture = file.files[0].name
-        console.log(picture)
-        $("#pictureSubmit").on("click", function () { submitPicture(picture) })
 
+
+function previewFile(){
+    var preview = document.querySelector('img'); 
+    var file    = document.querySelector('input[type=file]').files[0]; 
+    var reader  = new FileReader();
+
+    reader.onloadend = function () {
+        preview.src = reader.result;
+        //console.log(reader.result) //logs img as url to console
+        //$("#pictureSubmit").on("click", function () { submitPicture(reader.result) })
     }
+
+    if (file) {
+        reader.readAsDataURL(file); //reads the data as a URL
+    } else {
+        preview.src = "";
+    }
+
 };
 //Merged these two submitPicture functions, didn't delete one b/c wasn't sure which one was needed
 function submitPicture(picture) {
@@ -31,7 +46,10 @@ function submitPicture(picture) {   //TODO (MAX) - can we delete this entire fun
     console.log("picture submited")
     console.log(picture)
     document.getElementById("userPicture").src = picture;
+
 }
+
+
 
 //Face++ API query and array creation
 let baseAlcohol; //base alcohol that will be included at the end of queryDrinkURL
@@ -54,7 +72,7 @@ $.ajax({
         "X-RapidAPI-Key": "d1d151fcf6msha9240c9ffb25a4bp14a1ddjsn58db10897e38"
     }
 }).then(function (response) {
-    console.log(response.drinks[0].strDrink);
+    //console.log(response.drinks[0].strDrink);
 });
 
 
@@ -73,41 +91,49 @@ $.ajax({
 //-------------TEST CODE--------------------//
 
 function submitPicture(inputFile) {
-    var form = new FormData();
+var form = new FormData();
     form.append("api_key", "5WD1Tc70yflyZBAXRMHZzg1p6lUF0Nbm");
     form.append("api_secret", "RvXCsEc7vf6xZFr-q1h1KH_F0hJ9vKzm");
     //form.append("image_url", "https://images-na.ssl-images-amazon.com/images/I/61Wo915nuTL._SL1000_.jpg");
     form.append("image_file", inputFile);
     form.append("return_attributes", "emotion");
-    // form.append("return_attributes", "gender"); //API seems to only take one attribute section as an input
+// form.append("return_attributes", "gender"); //API seems to only take one attribute section as an input
 
-    var settings = {
-        "url": "https://api-us.faceplusplus.com/facepp/v3/detect",
-        "method": "POST",
-        "processData": false,
-        "contentType": false,
-        "mimeType": "multipart/form-data",
-        "data": form
-    }
-
-    $.ajax(settings).done(function (response) {
-        const face = JSON.parse(response);
-        const tempFace = JSON.parse(response);
-        const emotions = face.faces[0].attributes.emotion;
-        sortedEmotions = [];
-
-        for (var type in emotions) {
-            sortedEmotions.push([type, emotions[type]])
-        }
-        sortedEmotions.sort(function (a, b) {
-            return b[1] - a[1];
-        });
-
-        console.log(sortedEmotions);
-        console.log("Primary: " + sortedEmotions[0][0] + ": " + sortedEmotions[0][1]);
-        console.log("Secondary: " + sortedEmotions[1][0] + ": " + sortedEmotions[1][1]);
-        return sortedEmotions;
+var settings = {
+    "url": "https://api-us.faceplusplus.com/facepp/v3/detect",
+    "method": "POST",
+    "processData": false,
+    "contentType": false,
+    "mimeType": "multipart/form-data",
+    "data": form
+}
+    sortedEmotions.sort(function (a, b) {
+        return b[1] - a[1];
     });
+
+    //console.log(sortedEmotions);
+    //console.log("Primary: " + sortedEmotions[0][0] + ": " + sortedEmotions[0][1]);
+    //console.log("Secondary: " + sortedEmotions[1][0] + ": " + sortedEmotions[1][1]);
+
+
+$.ajax(settings).done(function (response) {
+    const face = JSON.parse(response);
+    const tempFace = JSON.parse(response);
+    const emotions = face.faces[0].attributes.emotion;
+    sortedEmotions = [];
+
+    for (var type in emotions) {
+        sortedEmotions.push([type, emotions[type]])
+    }
+    sortedEmotions.sort(function (a, b) {
+        return b[1] - a[1];
+    });
+
+    console.log(sortedEmotions);
+    console.log("Primary: " + sortedEmotions[0][0] + ": " + sortedEmotions[0][1]);
+    console.log("Secondary: " + sortedEmotions[1][0] + ": " + sortedEmotions[1][1]);
+    return sortedEmotions;
+});
 };
 
 
@@ -143,6 +169,9 @@ $('a[href*="#"]')
 
 //test function for removing hidden class-- tested: after clicking submit, three drink cards now become visible
 $("#pictureSubmit").on("click", function () {
+
     $(".d-none").removeClass("d-none");
 });
+
+
 
