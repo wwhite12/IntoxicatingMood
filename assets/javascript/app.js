@@ -137,42 +137,76 @@ $.ajax(settings).done(function (response) {
 };
 
 //emotionKey-object linking emotions to base alcohols
-
 const emotionKey = {
     anger: "vodka",
     disgust: "wine",
     fear: "tequila",
     happiness: "rum",
     neutral: "gin",
-    sadness:"whiskey",
+    sadness: "whiskey",
     surprise: "champagne"
 };
 
+let inputFile;
 
-
+//needed to initialize picture for upload to FACE++ API
+$("#fileInput").change(function (e) {
+    inputFile = (e.target.files[0]);
+});
 
 //on click function, triggers:reveals hidden cards with random drink choices based on base alcohols
-$("#pictureSubmit").on("click",function(){
-    //selected user emotions----will replace later with face API response
-    let inputOne = $("#emotionOne").val();
-    let inputTwo = $("#emotionTwo").val();
-    let inputThree = $("#emotionThree").val();
-    //title of cards is selected emotions
-    $("#moodNamePrimary").text(inputOne);
-    $("#moodName2").text(inputTwo);
-    $("#moodName3").text(inputThree);
+$("#pictureSubmit").on("click", function () {
+    var form = new FormData();
+    form.append("api_key", "5WD1Tc70yflyZBAXRMHZzg1p6lUF0Nbm");
+    form.append("api_secret", "RvXCsEc7vf6xZFr-q1h1KH_F0hJ9vKzm");
+    //form.append("image_url", "https://images-na.ssl-images-amazon.com/images/I/61Wo915nuTL._SL1000_.jpg");
+    form.append("image_file", inputFile);
+    form.append("return_attributes", "emotion");
+    // form.append("return_attributes", "gender"); //API seems to only take one attribute section as an input
 
-    //baseAlcohols declared--- will be replaced later with link between returned emotions and base alcohols
-    let baseAlcohol1 = emotionKey[$('#emotionOne').val()];
-    let baseAlcohol2 = emotionKey[$("#emotionTwo").val()];
-    let baseAlcohol3 = emotionKey[$("#emotionThree").val()];
+    var settings = {
+        "url": "https://api-us.faceplusplus.com/facepp/v3/detect",
+        "method": "POST",
+        "processData": false,
+        "contentType": false,
+        "mimeType": "multipart/form-data",
+        "data": form
+    }
+    let sortedEmotions = [];
+    $.ajax(settings).done(function (response) {
+        const face = JSON.parse(response);
+        const tempFace = JSON.parse(response);
+        const emotions = face.faces[0].attributes.emotion;
 
-    //must have three different cocktail API queries for each base alcohol
-    const queryDrinkURL1 = "https://the-cocktail-db.p.rapidapi.com/filter.php?i=" + baseAlcohol1;  
-    const queryDrinkURL2 = "https://the-cocktail-db.p.rapidapi.com/filter.php?i=" + baseAlcohol2;
-    const queryDrinkURL3 = "https://the-cocktail-db.p.rapidapi.com/filter.php?i=" + baseAlcohol3;
-    
-    //ajax query for random drinks for primary mood
+        for (var type in emotions) {
+            sortedEmotions.push([type, emotions[type]])
+        }
+        sortedEmotions.sort(function (a, b) {
+            return b[1] - a[1];
+        });
+
+        console.log(sortedEmotions);
+        console.log("Primary: " + sortedEmotions[0][0] + ": " + sortedEmotions[0][1]);
+        console.log("Secondary: " + sortedEmotions[1][0] + ": " + sortedEmotions[1][1]);
+        return sortedEmotions;
+    }).then(function () {
+        //title of cards is selected emotions
+        $("#moodNamePrimary").text(sortedEmotions[0][0]);
+        $("#moodName2").text(sortedEmotions[1][0]);
+        $("#moodName3").text(sortedEmotions[2][0]);
+
+        //baseAlcohols declared--- will be replaced later with link between returned emotions and base alcohols
+        let baseAlcohol1 = emotionKey[sortedEmotions[0][0]];
+        let baseAlcohol2 = emotionKey[sortedEmotions[1][0]];
+        let baseAlcohol3 = emotionKey[sortedEmotions[2][0]];
+        // console.log(baseAlcohol1 + baseAlcohol2 + baseAlcohol3);
+
+        //must have three different cocktail API queries for each base alcohol
+        const queryDrinkURL1 = "https://the-cocktail-db.p.rapidapi.com/filter.php?i=" + baseAlcohol1;
+        const queryDrinkURL2 = "https://the-cocktail-db.p.rapidapi.com/filter.php?i=" + baseAlcohol2;
+        const queryDrinkURL3 = "https://the-cocktail-db.p.rapidapi.com/filter.php?i=" + baseAlcohol3;
+
+        //ajax query for random drinks for primary mood
         $.ajax({
             url: queryDrinkURL1,
             method: "GET",
@@ -181,18 +215,18 @@ $("#pictureSubmit").on("click",function(){
                 "X-RapidAPI-Key": "d1d151fcf6msha9240c9ffb25a4bp14a1ddjsn58db10897e38"
             }
         }).then(function (response) {
-           //variables for random drink one
-           let testDrink1 = response.drinks[Math.floor(Math.random() * ((response.drinks.length-1) - 0 + 1) ) + 0];
-           let testDrinkImg = testDrink1.strDrinkThumb;
-           let imgLocation = $("<img>").attr("src",testDrinkImg)
+            //variables for random drink one
+            let testDrink1 = response.drinks[Math.floor(Math.random() * ((response.drinks.length - 1) - 0 + 1)) + 0];
+            let testDrinkImg = testDrink1.strDrinkThumb;
+            let imgLocation = $("<img>").attr("src", testDrinkImg)
             //variables for random drink two
-           let testDrink2 = response.drinks[Math.floor(Math.random() * ((response.drinks.length-1) - 0 + 1) ) + 0];
-           let testDrinkImg2 = testDrink2.strDrinkThumb;
-           let imgLocation2 = $("<img>").attr("src",testDrinkImg2)
+            let testDrink2 = response.drinks[Math.floor(Math.random() * ((response.drinks.length - 1) - 0 + 1)) + 0];
+            let testDrinkImg2 = testDrink2.strDrinkThumb;
+            let imgLocation2 = $("<img>").attr("src", testDrinkImg2)
             //variables for random drink three
-           let testDrink3 = response.drinks[Math.floor(Math.random() * ((response.drinks.length-1) - 0 + 1) ) + 0];
-           let testDrinkImg3 = testDrink3.strDrinkThumb;
-           let imgLocation3 = $("<img>").attr("src",testDrinkImg3)
+            let testDrink3 = response.drinks[Math.floor(Math.random() * ((response.drinks.length - 1) - 0 + 1)) + 0];
+            let testDrinkImg3 = testDrink3.strDrinkThumb;
+            let imgLocation3 = $("<img>").attr("src", testDrinkImg3)
             //random drink one to DOM
             $("#drinkOneRandOne").text(testDrink1.strDrink);
             $("#drinkOneRandOne").append(imgLocation);
@@ -213,19 +247,19 @@ $("#pictureSubmit").on("click",function(){
                 "X-RapidAPI-Key": "d1d151fcf6msha9240c9ffb25a4bp14a1ddjsn58db10897e38"
             }
         }).then(function (response) {
-           
+
             //variables for random drink one
-           let testDrink1 = response.drinks[Math.floor(Math.random() * (response.drinks.length - 0 + 1) ) + 0];
-           let testDrinkImg = testDrink1.strDrinkThumb;
-           let imgLocation = $("<img>").attr("src",testDrinkImg)
+            let testDrink1 = response.drinks[Math.floor(Math.random() * (response.drinks.length - 0 + 1)) + 0];
+            let testDrinkImg = testDrink1.strDrinkThumb;
+            let imgLocation = $("<img>").attr("src", testDrinkImg)
             //variables for random drink two
-           let testDrink2 = response.drinks[Math.floor(Math.random() * (response.drinks.length - 0 + 1) ) + 0];
-           let testDrinkImg2 = testDrink2.strDrinkThumb;
-           let imgLocation2 = $("<img>").attr("src",testDrinkImg2)
+            let testDrink2 = response.drinks[Math.floor(Math.random() * (response.drinks.length - 0 + 1)) + 0];
+            let testDrinkImg2 = testDrink2.strDrinkThumb;
+            let imgLocation2 = $("<img>").attr("src", testDrinkImg2)
             //variables for random drink three
-           let testDrink3 = response.drinks[Math.floor(Math.random() * (response.drinks.length - 0 + 1) ) + 0];
-           let testDrinkImg3 = testDrink3.strDrinkThumb;
-           let imgLocation3 = $("<img>").attr("src",testDrinkImg3)
+            let testDrink3 = response.drinks[Math.floor(Math.random() * (response.drinks.length - 0 + 1)) + 0];
+            let testDrinkImg3 = testDrink3.strDrinkThumb;
+            let imgLocation3 = $("<img>").attr("src", testDrinkImg3)
             //random drink one to DOM
             $("#drinkTwoRandOne").text(testDrink1.strDrink);
             $("#drinkTwoRandOne").append(imgLocation);
@@ -247,19 +281,19 @@ $("#pictureSubmit").on("click",function(){
                 "X-RapidAPI-Key": "d1d151fcf6msha9240c9ffb25a4bp14a1ddjsn58db10897e38"
             }
         }).then(function (response) {
-           
-             //variables for random drink one
-           let testDrink1 = response.drinks[Math.floor(Math.random() * (response.drinks.length - 0 + 1) ) + 0];
-           let testDrinkImg = testDrink1.strDrinkThumb;
-           let imgLocation = $("<img>").attr("src",testDrinkImg)
+
+            //variables for random drink one
+            let testDrink1 = response.drinks[Math.floor(Math.random() * (response.drinks.length - 0 + 1)) + 0];
+            let testDrinkImg = testDrink1.strDrinkThumb;
+            let imgLocation = $("<img>").attr("src", testDrinkImg)
             //variables for random drink two
-           let testDrink2 = response.drinks[Math.floor(Math.random() * (response.drinks.length - 0 + 1) ) + 0];
-           let testDrinkImg2 = testDrink2.strDrinkThumb;
-           let imgLocation2 = $("<img>").attr("src",testDrinkImg2)
+            let testDrink2 = response.drinks[Math.floor(Math.random() * (response.drinks.length - 0 + 1)) + 0];
+            let testDrinkImg2 = testDrink2.strDrinkThumb;
+            let imgLocation2 = $("<img>").attr("src", testDrinkImg2)
             //variables for random drink three
-           let testDrink3 = response.drinks[Math.floor(Math.random() * (response.drinks.length - 0 + 1) ) + 0];
-           let testDrinkImg3 = testDrink3.strDrinkThumb;
-           let imgLocation3 = $("<img>").attr("src",testDrinkImg3)
+            let testDrink3 = response.drinks[Math.floor(Math.random() * (response.drinks.length - 0 + 1)) + 0];
+            let testDrinkImg3 = testDrink3.strDrinkThumb;
+            let imgLocation3 = $("<img>").attr("src", testDrinkImg3)
             //random drink one to DOM
             $("#drinkThreeRandOne").text(testDrink1.strDrink);
             $("#drinkThreeRandOne").append(imgLocation);
@@ -271,46 +305,37 @@ $("#pictureSubmit").on("click",function(){
             $("#drinkThreeRandThree").append(imgLocation3);
 
         });
-        
+    });
     //reveals hidden cards with above information
     $(".d-none").removeClass("d-none");
 
 
-
-
-});
-//Javascript for smooth-scroll 
-$('a[href*="#"]')
-    .not('[href="#"]')
-    .not('[href="#0"]')
-    .click(function (event) {
-        if (
-            location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '')
-            &&
-            location.hostname == this.hostname
-        ) {
-            var target = $(this.hash);
-            target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-            if (target.length) {
-                event.preventDefault();
-                $('html, body').animate({
-                    scrollTop: target.offset().top
-                }, 1000, function () {
-                    var $target = $(target);
-                    $target.focus();
-                    if ($target.is(":focus")) {
-                        return false;
-                    } else {
-                        $target.attr('tabindex', '-1');
-                    };
-                });
+    //Javascript for smooth-scroll 
+    $('a[href*="#"]')
+        .not('[href="#"]')
+        .not('[href="#0"]')
+        .click(function (event) {
+            if (
+                location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '')
+                &&
+                location.hostname == this.hostname
+            ) {
+                var target = $(this.hash);
+                target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+                if (target.length) {
+                    event.preventDefault();
+                    $('html, body').animate({
+                        scrollTop: target.offset().top
+                    }, 1000, function () {
+                        var $target = $(target);
+                        $target.focus();
+                        if ($target.is(":focus")) {
+                            return false;
+                        } else {
+                            $target.attr('tabindex', '-1');
+                        };
+                    });
+                }
             }
-        }
-    });
-
-
-
-
-
-
-
+        });
+});
