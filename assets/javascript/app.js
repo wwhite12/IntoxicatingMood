@@ -4,15 +4,37 @@
  * last updated: 8/5/19
  */
 
+let file = document.getElementById("fileInput");
+let picture
+$("#fileInput").change(function (e) {
+   //console.log(e.target.files[0])
+   $("#pictureSubmit").on("click", function () { submitPicture(e.target.files[0]) })
+   previewFile()
+});
+function previewFile() {
+   var preview = document.querySelector('img');
+   var file = document.querySelector('input[type=file]').files[0];
+   var reader = new FileReader();
+   reader.onloadend = function () {
+       preview.src = reader.result;
+   }
+   if (file) {
+       reader.readAsDataURL(file); //reads the data as a URL
+   } else {
+       preview.src = "";
+   }
+};
+
+
 //emotionKey-object linking emotions to base alcohols
 const emotionKey = {
-    anger: "vodka",
-    disgust: "wine",
-    fear: "tequila",
-    happiness: "rum",
-    neutral: "gin",
-    sadness: "whiskey",
-    surprise: "champagne"
+    anger: ["vodka","Vodka so strong you can almost taste the anger from the Gulags"],
+    disgust: ["wine","Disgusted? Grab a bottle of wine and vent about how stupid your boss is."],
+    fear: ["tequila","Nothing ~screams~ fear like 20 shots of tequila.."],
+    happiness: ["rum","Ever wonder how Captain Jack Sparrow is always so happy?"],
+    neutral: ["gin","So neutral you'd think it's from Switzerland"],
+    sadness: ["whiskey","Every country song ever says that whiskey can heal your sadness"],
+    surprise: ["champagne","To be clear, champagne is for good surprises.."]
 };
 
 let inputFile;
@@ -63,10 +85,15 @@ $("#pictureSubmit").on("click", function () {
         $("#moodName2").text(sortedEmotions[1][0]);
         $("#moodName3").text(sortedEmotions[2][0]);
 
+        $("#moodTextOne").text(emotionKey[sortedEmotions[0][0]][1]);
+        $(".card-text2").text(emotionKey[sortedEmotions[1][0]][1]);
+        $("#moodTextThree").text(emotionKey[sortedEmotions[2][0]][1]);
+
+
         //baseAlcohols declared--- will be replaced later with link between returned emotions and base alcohols
-        let baseAlcohol1 = emotionKey[sortedEmotions[0][0]];
-        let baseAlcohol2 = emotionKey[sortedEmotions[1][0]];
-        let baseAlcohol3 = emotionKey[sortedEmotions[2][0]];
+        let baseAlcohol1 = emotionKey[sortedEmotions[0][0]][0];
+        let baseAlcohol2 = emotionKey[sortedEmotions[1][0]][0];
+        let baseAlcohol3 = emotionKey[sortedEmotions[2][0]][0];
         // console.log(baseAlcohol1 + baseAlcohol2 + baseAlcohol3);
 
         //must have three different cocktail API queries for each base alcohol
