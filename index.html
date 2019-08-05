@@ -12,9 +12,8 @@
     <link rel="stylesheet" type="text/css" href="./assets/css/reset.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
-
-
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+    </script>
     <link rel="stylesheet" type="text/css" href="./assets/css/bulma.css" />
     <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -36,127 +35,145 @@
                 </div>
             </div>
         </div>
-        <div id= "spacer"></div>
+        <div id="spacer"></div>
     </header>
 
 
     <main>
 
 
-        <div class="background">
-
-            <!--Submit Photo Here-->
-            <div class="row face">
-                <div class="column photo">
-                    <div id="userInput">
-                        <div class="file has-name is-boxed is-centered">
-                            <label class="file-label">
-                                <input class="file-input" type="file" name="resume" id="fileInput">
-                                <span class="file-cta">
-                                    <span class="file-icon">
-                                        <i class="fas fa-upload"></i>
-                                    </span>
-                                    <span class="file-label" id="file">
-                                        Choose a picture…
-                                    </span>
-                                </span>
-                                <span class="file-name" id="filename">
-                                    browse
-                                </span>
-                            </label>
-                        </div>
-                        <div class="buttons is-centered button-div">
-                            <span class="button" id="pictureSubmit"><a href="#bottom">Submit</a></span>
-                        </div>
-                    </div>
-                </div>
-
-
-            </div>
+        <div class="form-group">
+            <label for="exampleFormControlSelect1">Select Emotion</label>
+            <select class="form-control" id="emotionOne">
+                <option>sadness</option>
+                <option>fear</option>
+                <option>disgust</option>
+                <option>happiness</option>
+                <option>surprise</option>
+                <option>neutral</option>
+                <option>anger</option>
+            </select>
         </div>
 
-
-        <div class="back">
-            <hr>
-
-            <!--Drink recommendation 1-->
-            <div class="row justify-content-center justify-content-around align-items-center drinks">
-                <div class="column">
-                    <div class="card drink" style="width: 18rem;">
-                        <img src="..." class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Mood 1</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of
-                                the
-                                card's content.</p>
-                        </div>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item"></li>
-                            <li class="list-group-item"></li>
-                            <li class="list-group-item"></li>
-                        </ul>
-                        <div class="card-body">
-                            <a href="#" class="card-link">Card link</a>
-                            <a href="#" class="card-link">Another link</a>
-                        </div>
-
-        
-                    </div>
-                </div>
-                <!-- </div> -->
-
-                <!--Drink recommendation 2-->
-                <!-- <div class="row"> -->
-                <div class="column">
-                    <div class="card drink" style="width: 18rem;">
-                        <img src="..." class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Mood 2</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of
-                                the
-                                card's content.</p>
-                        </div>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item"></li>
-                            <li class="list-group-item"></li>
-                            <li class="list-group-item"></li>
-                        </ul>
-                        <div class="card-body">
-                            <a href="#" class="card-link">Card link</a>
-                            <a href="#" class="card-link">Another link</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- </div> -->
-
-                <!--Drink recommendation 3-->
-                <!-- <div class="row"> -->
-
-                <div class="column">
-                    <div class="card drink" style="width: 18rem;">
-                        <img src="..." class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 id=bottom class="card-title">Mood 3</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of
-                                the
-                                card's content.</p>
-                        </div>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item"></li>
-                            <li class="list-group-item"></li>
-                            <li class="list-group-item"></li>
-                        </ul>
-                        <div class="card-body">
-                            <a href="#" class="card-link">Card link</a>
-                            <a href="#" class="card-link">Another link</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="form-group">
+            <label for="exampleFormControlSelect1">Select Emotion</label>
+            <select class="form-control" id="emotionTwo">
+                <option>sadness</option>
+                <option>fear</option>
+                <option>disgust</option>
+                <option>happiness</option>
+                <option>surprise</option>
+                <option>neutral</option>
+                <option>anger</option>
+            </select>
         </div>
+
+        <div class="form-group">
+            <label for="exampleFormControlSelect1">Select Emotion</label>
+            <select class="form-control" id="emotionThree">
+                <option>sadness</option>
+                <option>fear</option>
+                <option>disgust</option>
+                <option>happiness</option>
+                <option>surprise</option>
+                <option>neutral</option>
+                <option>anger</option>
+            </select>
+        </div>
+        <hr>
+
+
+
+        <!--Drink recommendation 1-->
+        <div class="row justify-content-center justify-content-around drinks d-none">
+            <div class="column">
+                <div class="card drink" style="width: 18rem;">
+
+                    <div class="card-body">
+                        <h5 class="card-title" id="moodNamePrimary">Mood 1</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                            the
+                            card's content.</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item" id="drinkOneRandOne">drink</li>
+                        <li class="list-group-item" id="drinkOneRandTwo">drink</li>
+                        <li class="list-group-item" id="drinkOneRandThree">drink</li>
+                    </ul>
+
+                    <div class="background">
+
+                        <!--Submit Photo Here-->
+                        <div class="row face">
+                            <div class="column photo">
+                                <div id="userInput">
+                                    <div class="file has-name is-boxed is-centered">
+                                        <label class="file-label">
+                                            <input class="file-input" type="file" name="resume" id="fileInput">
+                                            <span class="file-cta">
+                                                <span class="file-icon">
+                                                    <i class="fas fa-upload"></i>
+                                                </span>
+                                                <span class="file-label" id="file">
+                                                    Choose a picture…
+                                                </span>
+                                            </span>
+                                            <span class="file-name" id="filename">
+                                                browse
+                                            </span>
+                                        </label>
+                                    </div>
+                                    <div class="buttons is-centered button-div">
+                                        <span class="button" id="pictureSubmit"><a href="#bottom">Submit</a></span>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <!-- </div> -->
+
+                        <!--Drink recommendation 2-->
+                        <!-- <div class="row"> -->
+                        <div class="column">
+                            <div class="card drink" style="width: 18rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title" id="moodName2">Mood 2</h5>
+                                    <p class="card-text">Some quick example text to build on the card title and make up
+                                        the bulk of
+                                        the
+                                        card's content.</p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item" id="drinkTwoRandOne"></li>
+                                    <li class="list-group-item" id="drinkTwoRandTwo"></li>
+                                    <li class="list-group-item" id="drinkTwoRandThree"></li>
+                                </ul>
+
+                            </div>
+                        </div>
+                        <!-- </div> -->
+
+                        <!--Drink recommendation 3-->
+                        <!-- <div class="row"> -->
+                        <div class="column">
+                            <div class="card drink" style="width: 18rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title" id="moodName3">Mood 3</h5>
+                                    <p class="card-text">Some quick example text to build on the card title and make up
+                                        the bulk of
+                                        the
+                                        card's content.</p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item" id="drinkThreeRandOne"></li>
+                                    <li class="list-group-item" id="drinkThreeRandTwo"></li>
+                                    <li class="list-group-item" id="drinkThreeRandThree"></li>
+                                </ul>
+
+                            </div>
+                        </div>
+                    </div>
     </main>
 
     <footer>
@@ -164,6 +181,7 @@
 
     </footer>
     <script type="text/javascript" src="./assets/javascript/app.js"></script>
+
 </body>
 
 </html>

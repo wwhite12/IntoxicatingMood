@@ -136,6 +136,145 @@ $.ajax(settings).done(function (response) {
 });
 };
 
+//emotionKey-object linking emotions to base alcohols
+
+const emotionKey = {
+    anger: "vodka",
+    disgust: "wine",
+    fear: "tequila",
+    happiness: "rum",
+    neutral: "gin",
+    sadness:"whiskey",
+    surprise: "champagne"
+};
+
+
+
+
+//on click function, triggers:reveals hidden cards with random drink choices based on base alcohols
+$("#pictureSubmit").on("click",function(){
+    //selected user emotions----will replace later with face API response
+    let inputOne = $("#emotionOne").val();
+    let inputTwo = $("#emotionTwo").val();
+    let inputThree = $("#emotionThree").val();
+    //title of cards is selected emotions
+    $("#moodNamePrimary").text(inputOne);
+    $("#moodName2").text(inputTwo);
+    $("#moodName3").text(inputThree);
+
+    //baseAlcohols declared--- will be replaced later with link between returned emotions and base alcohols
+    let baseAlcohol1 = emotionKey[$('#emotionOne').val()];
+    let baseAlcohol2 = emotionKey[$("#emotionTwo").val()];
+    let baseAlcohol3 = emotionKey[$("#emotionThree").val()];
+
+    //must have three different cocktail API queries for each base alcohol
+    const queryDrinkURL1 = "https://the-cocktail-db.p.rapidapi.com/filter.php?i=" + baseAlcohol1;  
+    const queryDrinkURL2 = "https://the-cocktail-db.p.rapidapi.com/filter.php?i=" + baseAlcohol2;
+    const queryDrinkURL3 = "https://the-cocktail-db.p.rapidapi.com/filter.php?i=" + baseAlcohol3;
+    
+    //ajax query for random drinks for primary mood
+        $.ajax({
+            url: queryDrinkURL1,
+            method: "GET",
+            headers: {
+                "X-RapidAPI-Host": "the-cocktail-db.p.rapidapi.com",
+                "X-RapidAPI-Key": "d1d151fcf6msha9240c9ffb25a4bp14a1ddjsn58db10897e38"
+            }
+        }).then(function (response) {
+           //variables for random drink one
+           let testDrink1 = response.drinks[Math.floor(Math.random() * ((response.drinks.length-1) - 0 + 1) ) + 0];
+           let testDrinkImg = testDrink1.strDrinkThumb;
+           let imgLocation = $("<img>").attr("src",testDrinkImg)
+            //variables for random drink two
+           let testDrink2 = response.drinks[Math.floor(Math.random() * ((response.drinks.length-1) - 0 + 1) ) + 0];
+           let testDrinkImg2 = testDrink2.strDrinkThumb;
+           let imgLocation2 = $("<img>").attr("src",testDrinkImg2)
+            //variables for random drink three
+           let testDrink3 = response.drinks[Math.floor(Math.random() * ((response.drinks.length-1) - 0 + 1) ) + 0];
+           let testDrinkImg3 = testDrink3.strDrinkThumb;
+           let imgLocation3 = $("<img>").attr("src",testDrinkImg3)
+            //random drink one to DOM
+            $("#drinkOneRandOne").text(testDrink1.strDrink);
+            $("#drinkOneRandOne").append(imgLocation);
+            //random drink two to DOM
+            $("#drinkOneRandTwo").text(testDrink2.strDrink);
+            $("#drinkOneRandTwo").append(imgLocation2);
+            //random drink three to DOM
+            $("#drinkOneRandThree").text(testDrink3.strDrink);
+            $("#drinkOneRandThree").append(imgLocation3);
+        });
+
+        //ajax query for drinks for secondary mood
+        $.ajax({
+            url: queryDrinkURL2,
+            method: "GET",
+            headers: {
+                "X-RapidAPI-Host": "the-cocktail-db.p.rapidapi.com",
+                "X-RapidAPI-Key": "d1d151fcf6msha9240c9ffb25a4bp14a1ddjsn58db10897e38"
+            }
+        }).then(function (response) {
+           
+            //variables for random drink one
+           let testDrink1 = response.drinks[Math.floor(Math.random() * (response.drinks.length - 0 + 1) ) + 0];
+           let testDrinkImg = testDrink1.strDrinkThumb;
+           let imgLocation = $("<img>").attr("src",testDrinkImg)
+            //variables for random drink two
+           let testDrink2 = response.drinks[Math.floor(Math.random() * (response.drinks.length - 0 + 1) ) + 0];
+           let testDrinkImg2 = testDrink2.strDrinkThumb;
+           let imgLocation2 = $("<img>").attr("src",testDrinkImg2)
+            //variables for random drink three
+           let testDrink3 = response.drinks[Math.floor(Math.random() * (response.drinks.length - 0 + 1) ) + 0];
+           let testDrinkImg3 = testDrink3.strDrinkThumb;
+           let imgLocation3 = $("<img>").attr("src",testDrinkImg3)
+            //random drink one to DOM
+            $("#drinkTwoRandOne").text(testDrink1.strDrink);
+            $("#drinkTwoRandOne").append(imgLocation);
+            //random drink two to DOM
+            $("#drinkTwoRandTwo").text(testDrink2.strDrink);
+            $("#drinkTwoRandTwo").append(imgLocation2);
+            //random drink three to DOM
+            $("#drinkTwoRandThree").text(testDrink3.strDrink);
+            $("#drinkTwoRandThree").append(imgLocation3);
+
+        });
+
+        //ajax query for random drink for third mood
+        $.ajax({
+            url: queryDrinkURL3,
+            method: "GET",
+            headers: {
+                "X-RapidAPI-Host": "the-cocktail-db.p.rapidapi.com",
+                "X-RapidAPI-Key": "d1d151fcf6msha9240c9ffb25a4bp14a1ddjsn58db10897e38"
+            }
+        }).then(function (response) {
+           
+             //variables for random drink one
+           let testDrink1 = response.drinks[Math.floor(Math.random() * (response.drinks.length - 0 + 1) ) + 0];
+           let testDrinkImg = testDrink1.strDrinkThumb;
+           let imgLocation = $("<img>").attr("src",testDrinkImg)
+            //variables for random drink two
+           let testDrink2 = response.drinks[Math.floor(Math.random() * (response.drinks.length - 0 + 1) ) + 0];
+           let testDrinkImg2 = testDrink2.strDrinkThumb;
+           let imgLocation2 = $("<img>").attr("src",testDrinkImg2)
+            //variables for random drink three
+           let testDrink3 = response.drinks[Math.floor(Math.random() * (response.drinks.length - 0 + 1) ) + 0];
+           let testDrinkImg3 = testDrink3.strDrinkThumb;
+           let imgLocation3 = $("<img>").attr("src",testDrinkImg3)
+            //random drink one to DOM
+            $("#drinkThreeRandOne").text(testDrink1.strDrink);
+            $("#drinkThreeRandOne").append(imgLocation);
+            //random drink two to DOM
+            $("#drinkThreeRandTwo").text(testDrink2.strDrink);
+            $("#drinkThreeRandTwo").append(imgLocation2);
+            //random drink three to DOM
+            $("#drinkThreeRandThree").text(testDrink3.strDrink);
+            $("#drinkThreeRandThree").append(imgLocation3);
+
+        });
+        
+    //reveals hidden cards with above information
+    $(".d-none").removeClass("d-none");
+
 
 //Javascript for smooth-scroll 
 $('a[href*="#"]')
@@ -166,12 +305,11 @@ $('a[href*="#"]')
         }
     });
 
-
-//test function for removing hidden class-- tested: after clicking submit, three drink cards now become visible
-$("#pictureSubmit").on("click", function () {
-
-    $(".d-none").removeClass("d-none");
 });
+
+
+
+
 
 
 
