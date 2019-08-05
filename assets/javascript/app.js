@@ -1,7 +1,7 @@
 /**
  * JavaScript file for Project 1 website
  * @author Max Coursey, Will White, Arianna Sanson
- * 
+ * last updated: 8/5/19
  */
 
 //File submission changes
@@ -39,7 +39,7 @@ function submitPicture(picture) {
 
 
     }
-};
+//};
 function submitPicture(picture) {   //TODO (MAX) - can we delete this entire function?
     //max coming up with this. will nest once complete? Just console.logging picture name for now
 
@@ -276,6 +276,9 @@ $("#pictureSubmit").on("click",function(){
     $(".d-none").removeClass("d-none");
 
 
+
+
+});
 //Javascript for smooth-scroll 
 $('a[href*="#"]')
     .not('[href="#"]')
@@ -304,8 +307,6 @@ $('a[href*="#"]')
             }
         }
     });
-
-});
 
 
 
