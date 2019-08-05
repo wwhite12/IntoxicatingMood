@@ -152,7 +152,13 @@ const emotionKey = {
 
 
 //on click function, triggers:reveals hidden cards with random drink choices based on base alcohols
-$("#pictureSubmit").on("click",function(){
+$("#pictureSubmit").on("click",function(e){
+    e.preventDefault();
+
+    //change text on Jombotron after picture submission 
+    $("#title-change").html("Drink Results");
+
+
     //selected user emotions----will replace later with face API response
     let inputOne = $("#emotionOne").val();
     let inputTwo = $("#emotionTwo").val();
@@ -273,12 +279,17 @@ $("#pictureSubmit").on("click",function(){
         });
         
     //reveals hidden cards with above information
-    $(".d-none").removeClass("d-none");
+    $(".invisible").removeClass("invisible");
 
 
 
 
 });
+
+$(".return").on("click", function(e){
+    $("#title-change").html("Title Here");
+});
+
 //Javascript for smooth-scroll 
 $('a[href*="#"]')
     .not('[href="#"]')
