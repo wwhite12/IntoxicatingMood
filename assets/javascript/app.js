@@ -1,7 +1,7 @@
 /**
  * JavaScript file for Project 1 website
  * @author Max Coursey, Will White, Arianna Sanson
- * 
+ * last updated: 8/5/19
  */
 
 //File submission changes
