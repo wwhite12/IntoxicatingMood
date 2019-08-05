@@ -41,7 +41,7 @@
 
     <main>
 
-
+<!---
         <div class="form-group">
             <label for="exampleFormControlSelect1">Select Emotion</label>
             <select class="form-control" id="emotionOne">
@@ -80,6 +80,41 @@
                 <option>anger</option>
             </select>
         </div>
+    -->
+    <div class="background">
+
+        <!--Submit Photo Here-->
+        <div class="row face">
+            <div class="column photo">
+                <div id="userInput">
+                    <div class="file has-name is-boxed is-centered">
+                        <label class="file-label">
+                            <input class="file-input" type="file" name="resume" id="fileInput">
+                            <span class="file-cta">
+                                <span class="file-icon">
+                                    <i class="fas fa-upload"></i>
+                                </span>
+                                <span class="file-label" id="file">
+                                    <img src="" class="image is-128x128" alt="Choose a picture…" >
+                                </span>
+                            </span>
+                            <span class="file-name" id="filename">
+                                browse
+                            </span>
+                        </label>
+                    </div>
+                    <div class="buttons is-centered button-div">
+                        <span class="button" id="pictureSubmit"><a href="#bottom">Submit</a></span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <div class="back">
         <hr>
 
 
@@ -96,50 +131,21 @@
                             card's content.</p>
                     </div>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item" id="drinkOneRandOne">drink</li>
-                        <li class="list-group-item" id="drinkOneRandTwo">drink</li>
-                        <li class="list-group-item" id="drinkOneRandThree">drink</li>
+                        <li class="list-group-item" id="drinkOneRandOne"></li>
+                        <li class="list-group-item" id="drinkOneRandTwo"></li>
+                        <li class="list-group-item" id="drinkOneRandThree"></li>
                     </ul>
-
-                    <div class="background">
-
-                        <!--Submit Photo Here-->
-                        <div class="row face">
-                            <div class="column photo">
-                                <div id="userInput">
-                                    <div class="file has-name is-boxed is-centered">
-                                        <label class="file-label">
-                                            <input class="file-input" type="file" name="resume" id="fileInput">
-                                            <span class="file-cta">
-                                                <span class="file-icon">
-                                                    <i class="fas fa-upload"></i>
-                                                </span>
-                                                <span class="file-label" id="file">
-                                                    Choose a picture…
-                                                </span>
-                                            </span>
-                                            <span class="file-name" id="filename">
-                                                browse
-                                            </span>
-                                        </label>
-                                    </div>
-                                    <div class="buttons is-centered button-div">
-                                        <span class="button" id="pictureSubmit"><a href="#bottom">Submit</a></span>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                        </div>
-                        <!-- </div> -->
-
+                    </div>
+                    </div>
+                   
+                
                         <!--Drink recommendation 2-->
                         <!-- <div class="row"> -->
                         <div class="column">
                             <div class="card drink" style="width: 18rem;">
                                 <div class="card-body">
                                     <h5 class="card-title" id="moodName2">Mood 2</h5>
-                                    <p class="card-text">Some quick example text to build on the card title and make up
+                                    <p class="card-text" id = "bottom">Some quick example text to build on the card title and make up
                                         the bulk of
                                         the
                                         card's content.</p>
@@ -173,8 +179,9 @@
 
                             </div>
                         </div>
-                    </div>
-    </main>
+                </div>
+            </div>
+       </main>
 
     <footer>
 
