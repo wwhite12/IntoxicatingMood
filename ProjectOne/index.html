@@ -24,10 +24,10 @@
 <body>
 
     <header>
-        <div class="row">
+        <div id="top" class="row">
             <div class="jumbotron jumbotron-fluid title">
                 <div class="container">
-                    <h1 class="display-4">Title Here</h1>
+                    <h1 id="title-change" class="display-4">Title Here</h1>
                     <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its
                         parent.
                     </p>
@@ -119,15 +119,20 @@
 
 
 
+        <div class="back" id="bottom">
+            <hr>
+
+
+
             <!--Drink recommendation 1-->
-            <div class="row justify-content-center justify-content-around drinks d-none">
+            <div class="row justify-content-center justify-content-around drinks invisible">
                 <div class="column">
                     <div class="card drink" style="width: 18rem;">
 
                         <div class="card-body">
                             <h5 class="card-title" id="moodNamePrimary">Mood 1</h5>
-                            <p class="card-text" id="moodTextOne">Some quick example text to build on the card title and
-                                make up the bulk of
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
+                                of
                                 the
                                 card's content.</p>
                         </div>
@@ -146,8 +151,7 @@
                     <div class="card drink" style="width: 18rem;">
                         <div class="card-body">
                             <h5 class="card-title" id="moodName2">Mood 2</h5>
-                            <p class="card-text2" id="bottom">Some quick example text to build on the card title and
-                                make up
+                            <p class="card-text">Some quick example text to build on the card title and make up
                                 the bulk of
                                 the
                                 card's content.</p>
@@ -168,8 +172,7 @@
                     <div class="card drink" style="width: 18rem;">
                         <div class="card-body">
                             <h5 class="card-title" id="moodName3">Mood 3</h5>
-                            <p class="card-text" id="moodTextThree">Some quick example text to build on the card title
-                                and make up
+                            <p class="card-text">Some quick example text to build on the card title and make up
                                 the bulk of
                                 the
                                 card's content.</p>
@@ -183,7 +186,13 @@
                     </div>
                 </div>
             </div>
+
+            <div class="return">
+                <p><a href="#top" id="top">Return To Top</a></p>
+            </div>
         </div>
+
+
     </main>
 
     <footer>

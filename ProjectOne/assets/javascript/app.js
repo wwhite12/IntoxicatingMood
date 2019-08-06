@@ -208,7 +208,11 @@ $("#pictureSubmit").on("click", function () {
         });
     });
     //reveals hidden cards with above information
-    $(".d-none").removeClass("d-none");
+    $(".invisible").removeClass("invisible");
+
+    $(".return").on("click", function(e){
+        $("#title-change").html("Title Here");
+    });
 
 
     //Javascript for smooth-scroll 
