@@ -28,12 +28,12 @@ function previewFile() {
 
 //emotionKey-object linking emotions to base alcohols
 const emotionKey = {
-    anger: ["vodka","Vodka so strong you can almost taste the anger from the Gulags"],
+    anger: ["vodka","In Soviet Russia, vodka is angry at you."],
     disgust: ["wine","Disgusted? Grab a bottle of wine and vent about how stupid your boss is."],
     fear: ["tequila","Nothing ~screams~ fear like 20 shots of tequila.."],
     happiness: ["rum","Ever wonder how Captain Jack Sparrow is always so happy?"],
     neutral: ["gin","So neutral you'd think it's from Switzerland"],
-    sadness: ["whiskey","Every country song ever says that whiskey can heal your sadness"],
+    sadness: ["whiskey","Pair this with a country song and you'll cry all night"],
     surprise: ["champagne","To be clear, champagne is for good surprises.."]
 };
 
@@ -113,15 +113,18 @@ $("#pictureSubmit").on("click", function () {
             //variables for random drink one
             let testDrink1 = response.drinks[Math.floor(Math.random() * ((response.drinks.length - 1) - 0 + 1)) + 0];
             let testDrinkImg = testDrink1.strDrinkThumb;
-            let imgLocation = $("<img>").attr("src", testDrinkImg)
+            let imgLocation = $("<img>").attr("src", testDrinkImg);
+            imgLocation.attr("data-id",testDrink1.idDrink);
             //variables for random drink two
             let testDrink2 = response.drinks[Math.floor(Math.random() * ((response.drinks.length - 1) - 0 + 1)) + 0];
             let testDrinkImg2 = testDrink2.strDrinkThumb;
             let imgLocation2 = $("<img>").attr("src", testDrinkImg2)
+            imgLocation2.attr("data-id",testDrink2.idDrink);
             //variables for random drink three
             let testDrink3 = response.drinks[Math.floor(Math.random() * ((response.drinks.length - 1) - 0 + 1)) + 0];
             let testDrinkImg3 = testDrink3.strDrinkThumb;
             let imgLocation3 = $("<img>").attr("src", testDrinkImg3)
+            imgLocation3.attr("data-id",testDrink3.idDrink);
             //random drink one to DOM
             $("#drinkOneRandOne").text(testDrink1.strDrink);
             $("#drinkOneRandOne").append(imgLocation);
@@ -253,3 +256,23 @@ function renderSavedDrinks(list) {
         drinkItem.text(list[i]);
     }
 }
+
+
+//function to show instructions upon clicking pic
+
+function renderIns(){
+    var drinkID = $(this).attr("data-id");
+    queryUrlID = "https://the-cocktail-db.p.rapidapi.com/lookup.php?i="+drinkID;
+
+    $.ajax({
+        url: queryUrlID,
+        method: "GET",
+        headers: {
+            "X-RapidAPI-Host": "the-cocktail-db.p.rapidapi.com",
+            "X-RapidAPI-Key": "d1d151fcf6msha9240c9ffb25a4bp14a1ddjsn58db10897e38"
+                }
+    }).then(function(response){
+        console.log(response.drinks[0].strInstructions)
+    })
+}
+
