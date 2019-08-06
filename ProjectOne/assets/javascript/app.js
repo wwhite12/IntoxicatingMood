@@ -205,14 +205,15 @@ $("#pictureSubmit").on("click", function () {
             $("#drinkThreeRandThree").text(testDrink3.strDrink);
             $("#drinkThreeRandThree").append(imgLocation3);
 
+            //reveals hidden cards with above information
+            $(".invisible").removeClass("invisible");
+
+            $(".return").on("click", function (e) {
+                $("#title-change").html("Title Here");
+            });
         });
     });
-    //reveals hidden cards with above information
-    $(".invisible").removeClass("invisible");
 
-    $(".return").on("click", function(e){
-        $("#title-change").html("Title Here");
-    });
 
 
     //Javascript for smooth-scroll 
@@ -247,10 +248,10 @@ $("#pictureSubmit").on("click", function () {
 
 
 //function to add drink to a local storage item when user clicks
-$(".list-class-item").on("click", function() {
+$(".list-class-item").on("click", function () {
     drinkName = this.id;
-    if(confirm("Save Drink?") === true) {
-    localStorage.setItem("drinkName", drinkName);
+    if (confirm("Save Drink?") === true) {
+        localStorage.setItem("drinkName", drinkName);
     };
 });
 
@@ -258,12 +259,11 @@ function renderSavedDrinks(list) {
     $("#").empty();  //empties out html
 
     //render drink list
-    for(let i = 0; i < list.length; i++) {
+    for (let i = 0; i < list.length; i++) {
         var drinkItem = $("<p>");
         drinkItem.text(list[i]);
     }
 }
-
 
 //function to show instructions upon clicking pic
 
@@ -283,3 +283,23 @@ $("li").click(function() {
     })
 });
 
+/* controls age confirm modal*/
+//wanted it to save 
+function ageConfirmModal() {
+    if (localStorage.getItem("ageConf") == "true") {
+      $(".is-active").removeClass("is-active");
+  } if (localStorage.getItem("ageConf") == "false") {
+      location.href = 'http://www.google.com';
+  } else {
+      $("#ageYes").on("click", function () {
+          $(".is-active").removeClass("is-active");
+          localStorage.setItem("ageConf", "true")
+
+      })
+      $("#ageNo").on("click", function () {
+          location.href = 'http://www.google.com';
+          localStorage.setItem("ageConf", "false")
+      })
+  }
+}
+ageConfirmModal()

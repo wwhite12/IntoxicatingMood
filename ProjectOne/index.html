@@ -23,13 +23,30 @@
 
 <body>
 
+    <div class="modal  is-active ageConfirm">
+        <div class="modal-background ageConfirm"></div>
+        <div class="modal-content justify-content-center text-center ageConfirm">
+            <div>
+                <div>
+                    <h1>Welcome to Intoxicating Mood!</h1>
+                </div>
+                <div>
+                    <h2>Are you at least 21?</h2>
+                </div>
+            </div>
+            <div id="ageYoN">
+                <button class="button is-white is-large" id="ageYes">Yes</button>
+                <button class="button is-white is-large" id="ageNo">No</button>
+            </div>
+        </div>
+    </div>
+
     <header>
         <div id="top" class="row">
             <div class="jumbotron jumbotron-fluid title">
                 <div class="container">
-                    <h1 id="title-change" class="display-4">Title Here</h1>
-                    <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its
-                        parent.
+                    <h1 id="title-change" class="display-4">Intoxicating Mood</h1>
+                    <p class="lead">Find out what new cocktail you're feeling like!
                     </p>
 
                 </div>
@@ -119,78 +136,79 @@
 
 
 
-        <div class="back" id="bottom">
-            <hr>
+            <div class="back" id="bottom">
+                <hr>
 
 
 
-            <!--Drink recommendation 1-->
-            <div class="row justify-content-center justify-content-around drinks invisible">
-                <div class="column">
-                    <div class="card drink" style="width: 18rem;">
+                <!--Drink recommendation 1-->
+                <div class="row justify-content-center justify-content-around drinks invisible">
+                    <div class="column">
+                        <div class="card drink" style="width: 18rem;">
 
-                        <div class="card-body">
-                            <h5 class="card-title" id="moodNamePrimary">Mood 1</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of
-                                the
-                                card's content.</p>
+                            <div class="card-body">
+                                <h5 class="card-title" id="moodNamePrimary">Mood 1</h5>
+                                <p class="card-text" id="moodTextOne">Some quick example text to build on the card title and make up the
+                                    bulk
+                                    of
+                                    the
+                                    card's content.</p>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item" id="drinkOneRandOne"></li>
+                                <li class="list-group-item" id="drinkOneRandTwo"></li>
+                                <li class="list-group-item" id="drinkOneRandThree"></li>
+                            </ul>
                         </div>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item" id="drinkOneRandOne"></li>
-                            <li class="list-group-item" id="drinkOneRandTwo"></li>
-                            <li class="list-group-item" id="drinkOneRandThree"></li>
-                        </ul>
+                    </div>
+
+
+                    <!--Drink recommendation 2-->
+                    <!-- <div class="row"> -->
+                    <div class="column">
+                        <div class="card drink" style="width: 18rem;">
+                            <div class="card-body">
+                                <h5 class="card-title" id="moodName2">Mood 2</h5>
+                                <p class="card-text card-text2">Some quick example text to build on the card title and make up
+                                    the bulk of
+                                    the
+                                    card's content.</p>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item" id="drinkTwoRandOne"></li>
+                                <li class="list-group-item" id="drinkTwoRandTwo"></li>
+                                <li class="list-group-item" id="drinkTwoRandThree"></li>
+                            </ul>
+
+                        </div>
+                    </div>
+                    <!-- </div> -->
+
+                    <!--Drink recommendation 3-->
+                    <!-- <div class="row"> -->
+                    <div class="column">
+                        <div class="card drink" style="width: 18rem;">
+                            <div class="card-body">
+                                <h5 class="card-title" id="moodName3">Mood 3</h5>
+                                <p class="card-text" id="moodTextThree">Some quick example text to build on the card title and make up
+                                    the bulk of
+                                    the
+                                    card's content.</p>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item" id="drinkThreeRandOne"></li>
+                                <li class="list-group-item" id="drinkThreeRandTwo"></li>
+                                <li class="list-group-item" id="drinkThreeRandThree"></li>
+                            </ul>
+
+                        </div>
                     </div>
                 </div>
 
-
-                <!--Drink recommendation 2-->
-                <!-- <div class="row"> -->
-                <div class="column">
-                    <div class="card drink" style="width: 18rem;">
-                        <div class="card-body">
-                            <h5 class="card-title" id="moodName2">Mood 2</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up
-                                the bulk of
-                                the
-                                card's content.</p>
-                        </div>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item" id="drinkTwoRandOne"></li>
-                            <li class="list-group-item" id="drinkTwoRandTwo"></li>
-                            <li class="list-group-item" id="drinkTwoRandThree"></li>
-                        </ul>
-
-                    </div>
-                </div>
-                <!-- </div> -->
-
-                <!--Drink recommendation 3-->
-                <!-- <div class="row"> -->
-                <div class="column">
-                    <div class="card drink" style="width: 18rem;">
-                        <div class="card-body">
-                            <h5 class="card-title" id="moodName3">Mood 3</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up
-                                the bulk of
-                                the
-                                card's content.</p>
-                        </div>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item" id="drinkThreeRandOne"></li>
-                            <li class="list-group-item" id="drinkThreeRandTwo"></li>
-                            <li class="list-group-item" id="drinkThreeRandThree"></li>
-                        </ul>
-
-                    </div>
+                <div class="return">
+                    <p><a href="#top" id="top">Return To Top</a></p>
                 </div>
             </div>
-
-            <div class="return">
-                <p><a href="#top" id="top">Return To Top</a></p>
-            </div>
-        </div>
 
 
     </main>
