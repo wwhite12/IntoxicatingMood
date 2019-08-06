@@ -326,7 +326,7 @@ function renderIns(id){
         if(response.drinks[0].strIngredient15){
             $("#modalDrinkFacts").append(", " + response.drinks[0].strIngredient15);
         }
-        $("#modalDrinkFacts").append("<br>" +response.drinks[0].strInstructions);
+        $("#modalDrinkFacts").append("<br> Instructions: " +response.drinks[0].strInstructions);
 
         //for(let i = 1;i<= 15; i++){
           // if((response.drinks[0].strIngredient+i)){
