@@ -17,6 +17,17 @@ const emotionKey = {
 
 let inputFile;
 
+//prevents same drink popping up in 1/3 li's
+function randomArraySelector(array, count) {
+    const selections = []
+    for (let i = 0; i < count; i++) {
+        const index = Math.floor(Math.random() * array.length);
+        selections.push(array[index]);
+        array.splice(index, 1);
+    }
+    return selections;
+}
+
 //needed to initialize picture for upload to FACE++ API
 $("#fileInput").change(function (e) {
     inputFile = (e.target.files[0]);
@@ -24,6 +35,11 @@ $("#fileInput").change(function (e) {
 
 //on click function, triggers:reveals hidden cards with random drink choices based on base alcohols
 $("#pictureSubmit").on("click", function () {
+
+
+    //change jumbotron title to "drink results"
+    $("#title-change").html("Drink Results");
+
     var form = new FormData();
     form.append("api_key", "5WD1Tc70yflyZBAXRMHZzg1p6lUF0Nbm");
     form.append("api_secret", "RvXCsEc7vf6xZFr-q1h1KH_F0hJ9vKzm");
@@ -52,10 +68,6 @@ $("#pictureSubmit").on("click", function () {
         sortedEmotions.sort(function (a, b) {
             return b[1] - a[1];
         });
-
-        console.log(sortedEmotions);
-        console.log("Primary: " + sortedEmotions[0][0] + ": " + sortedEmotions[0][1]);
-        console.log("Secondary: " + sortedEmotions[1][0] + ": " + sortedEmotions[1][1]);
         return sortedEmotions;
     }).then(function () {
         //title of cards is selected emotions
@@ -67,7 +79,6 @@ $("#pictureSubmit").on("click", function () {
         let baseAlcohol1 = emotionKey[sortedEmotions[0][0]];
         let baseAlcohol2 = emotionKey[sortedEmotions[1][0]];
         let baseAlcohol3 = emotionKey[sortedEmotions[2][0]];
-        // console.log(baseAlcohol1 + baseAlcohol2 + baseAlcohol3);
 
         //must have three different cocktail API queries for each base alcohol
         const queryDrinkURL1 = "https://the-cocktail-db.p.rapidapi.com/filter.php?i=" + baseAlcohol1;
@@ -83,16 +94,20 @@ $("#pictureSubmit").on("click", function () {
                 "X-RapidAPI-Key": "d1d151fcf6msha9240c9ffb25a4bp14a1ddjsn58db10897e38"
             }
         }).then(function (response) {
+
+            const indexes = randomArraySelector(response.drinks, 3)
+            console.log(indexes)
+
             //variables for random drink one
-            let testDrink1 = response.drinks[Math.floor(Math.random() * ((response.drinks.length - 1) - 0 + 1)) + 0];
+            let testDrink1 = indexes[0];
             let testDrinkImg = testDrink1.strDrinkThumb;
             let imgLocation = $("<img>").attr("src", testDrinkImg)
             //variables for random drink two
-            let testDrink2 = response.drinks[Math.floor(Math.random() * ((response.drinks.length - 1) - 0 + 1)) + 0];
+            let testDrink2 = indexes[1];
             let testDrinkImg2 = testDrink2.strDrinkThumb;
             let imgLocation2 = $("<img>").attr("src", testDrinkImg2)
             //variables for random drink three
-            let testDrink3 = response.drinks[Math.floor(Math.random() * ((response.drinks.length - 1) - 0 + 1)) + 0];
+            let testDrink3 = indexes[2];
             let testDrinkImg3 = testDrink3.strDrinkThumb;
             let imgLocation3 = $("<img>").attr("src", testDrinkImg3)
             //random drink one to DOM
@@ -116,16 +131,20 @@ $("#pictureSubmit").on("click", function () {
             }
         }).then(function (response) {
 
+           
+
+            const moodTwo = randomArraySelector(response.drinks, 3)
+
             //variables for random drink one
-            let testDrink1 = response.drinks[Math.floor(Math.random() * (response.drinks.length - 0 + 1)) + 0];
+            let testDrink1 = moodTwo[0];
             let testDrinkImg = testDrink1.strDrinkThumb;
             let imgLocation = $("<img>").attr("src", testDrinkImg)
             //variables for random drink two
-            let testDrink2 = response.drinks[Math.floor(Math.random() * (response.drinks.length - 0 + 1)) + 0];
+            let testDrink2 = moodTwo[1];
             let testDrinkImg2 = testDrink2.strDrinkThumb;
             let imgLocation2 = $("<img>").attr("src", testDrinkImg2)
             //variables for random drink three
-            let testDrink3 = response.drinks[Math.floor(Math.random() * (response.drinks.length - 0 + 1)) + 0];
+            let testDrink3 = moodTwo[2];
             let testDrinkImg3 = testDrink3.strDrinkThumb;
             let imgLocation3 = $("<img>").attr("src", testDrinkImg3)
             //random drink one to DOM
@@ -150,16 +169,19 @@ $("#pictureSubmit").on("click", function () {
             }
         }).then(function (response) {
 
+
+            const moodThree = randomArraySelector(response.drinks, 3)
+
             //variables for random drink one
-            let testDrink1 = response.drinks[Math.floor(Math.random() * (response.drinks.length - 0 + 1)) + 0];
+            let testDrink1 = moodThree[0];
             let testDrinkImg = testDrink1.strDrinkThumb;
             let imgLocation = $("<img>").attr("src", testDrinkImg)
             //variables for random drink two
-            let testDrink2 = response.drinks[Math.floor(Math.random() * (response.drinks.length - 0 + 1)) + 0];
+            let testDrink2 = moodThree[1];
             let testDrinkImg2 = testDrink2.strDrinkThumb;
             let imgLocation2 = $("<img>").attr("src", testDrinkImg2)
             //variables for random drink three
-            let testDrink3 = response.drinks[Math.floor(Math.random() * (response.drinks.length - 0 + 1)) + 0];
+            let testDrink3 = moodThree[2];
             let testDrinkImg3 = testDrink3.strDrinkThumb;
             let imgLocation3 = $("<img>").attr("src", testDrinkImg3)
             //random drink one to DOM
@@ -174,9 +196,11 @@ $("#pictureSubmit").on("click", function () {
 
         });
     });
-    //reveals hidden cards with above information
+    
+    //reveals invisible cards with above information
     $(".invisible").removeClass("invisible");
 
+    //revert back to title 
     $(".return").on("click", function(e){
         $("#title-change").html("Title Here");
     });
