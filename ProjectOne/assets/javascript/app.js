@@ -261,10 +261,22 @@ function previewFile() {
 };
 
 /* controls age confirm modal*/
+//wanted it to save 
+function ageConfirmModal() {
+      if (localStorage.getItem("ageConf") == "true") {
+        $(".is-active").removeClass("is-active");
+    } if (localStorage.getItem("ageConf") == "false") {
+        location.href = 'http://www.google.com';
+    } else {
+        $("#ageYes").on("click", function () {
+            $(".is-active").removeClass("is-active");
+            localStorage.setItem("ageConf", "true")
 
-$("#ageYes").on("click", function () {
-    $(".is-active").removeClass("is-active");
-})
-$("#ageNo").on("click", function () {
-    location.href = 'http://www.google.com';
-})
+        })
+        $("#ageNo").on("click", function () {
+            location.href = 'http://www.google.com';
+            localStorage.setItem("ageConf", "false")
+        })
+    }
+}
+ageConfirmModal()
