@@ -283,10 +283,23 @@ function renderIns(id){
                 }
     }).then(function(response){
         console.log(response.drinks[0].strInstructions)
+        $("#modalDrinkTitle").text(response.drinks[0].strDrink);
+        $("#modalDrinkFacts").text("Ingredients: " + response.drinks[0].strIngredient1)
+        $("#modalDrinkFacts").append("<br>" +response.drinks[0].strInstructions);
+
+        //for(let i = 1;i<= 15; i++){
+          // if((response.drinks[0].strIngredient+i)){
+            //    console.log(response.drinks[0].strIngredient+i);
+            //}
+            //console.log(response.drinks[0].strIngredient+[i]);
+        //}
     })
 }
 
 $(".back").on("click", ".list-group-item > img", function(event){
+
+    $("#drinkModal").modal("show");
+
     const imgID = event.target.attributes[1].value
     renderIns(imgID);
 })
