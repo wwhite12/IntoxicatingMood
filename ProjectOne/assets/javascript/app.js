@@ -230,3 +230,39 @@ function renderSavedDrinks(list) {
         drinkItem.text(list[i]);
     }
 }
+
+/*shows picture when uploaded*/
+/* please TELL ME if you want to delete so I can stop re-adding all my code :) ~Ari */
+
+$("#fileInput").change ( function (e) {
+    //console.log(e.target.files[0])
+    $("#pictureSubmit").on("click", function () { submitPicture(e.target.files[0]) })
+    previewFile()});
+
+function previewFile(){
+    var preview = document.querySelector('img'); 
+    var file    = document.querySelector('input[type=file]').files[0]; 
+    var reader  = new FileReader();
+
+    reader.onloadend = function () {
+        preview.src = reader.result;
+        //console.log(reader.result) //logs img as url to console
+        //$("#pictureSubmit").on("click", function () { submitPicture(reader.result) })
+    }
+
+    if (file) {
+        reader.readAsDataURL(file); //reads the data as a URL
+    } else {
+        preview.src = "";
+    }
+
+};
+
+/* controls age confirm modal*/
+
+$("#ageYes").on("click", function(){
+    $(".is-active").removeClass("is-active");
+})
+$("#ageNo").on("click", function(){
+    location.href = 'http://www.google.com';
+})
