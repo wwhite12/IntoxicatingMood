@@ -8,7 +8,7 @@ let file = document.getElementById("fileInput");
 let picture
 $("#fileInput").change(function (e) {
    //console.log(e.target.files[0])
-   $("#pictureSubmit").on("click", function () { submitPicture(e.target.files[0]) })
+//    $("#pictureSubmit").on("click", function () { submitPicture(e.target.files[0]) })
    previewFile()
 });
 function previewFile() {
@@ -150,14 +150,19 @@ $("#pictureSubmit").on("click", function () {
             let testDrink1 = response.drinks[Math.floor(Math.random() * (response.drinks.length - 0 + 1)) + 0];
             let testDrinkImg = testDrink1.strDrinkThumb;
             let imgLocation = $("<img>").attr("src", testDrinkImg)
+            imgLocation.attr("data-id",testDrink1.idDrink);
+
             //variables for random drink two
             let testDrink2 = response.drinks[Math.floor(Math.random() * (response.drinks.length - 0 + 1)) + 0];
             let testDrinkImg2 = testDrink2.strDrinkThumb;
             let imgLocation2 = $("<img>").attr("src", testDrinkImg2)
+            imgLocation2.attr("data-id",testDrink2.idDrink);
+
             //variables for random drink three
             let testDrink3 = response.drinks[Math.floor(Math.random() * (response.drinks.length - 0 + 1)) + 0];
             let testDrinkImg3 = testDrink3.strDrinkThumb;
             let imgLocation3 = $("<img>").attr("src", testDrinkImg3)
+            imgLocation3.attr("data-id",testDrink3.idDrink);
             //random drink one to DOM
             $("#drinkTwoRandOne").text(testDrink1.strDrink);
             $("#drinkTwoRandOne").append(imgLocation);
@@ -183,15 +188,21 @@ $("#pictureSubmit").on("click", function () {
             //variables for random drink one
             let testDrink1 = response.drinks[Math.floor(Math.random() * (response.drinks.length - 0 + 1)) + 0];
             let testDrinkImg = testDrink1.strDrinkThumb;
-            let imgLocation = $("<img>").attr("src", testDrinkImg)
+            let imgLocation = $("<img>").attr("src", testDrinkImg);
+            imgLocation.attr("data-id",testDrink1.idDrink);
+
             //variables for random drink two
             let testDrink2 = response.drinks[Math.floor(Math.random() * (response.drinks.length - 0 + 1)) + 0];
             let testDrinkImg2 = testDrink2.strDrinkThumb;
-            let imgLocation2 = $("<img>").attr("src", testDrinkImg2)
+            let imgLocation2 = $("<img>").attr("src", testDrinkImg2);
+            imgLocation2.attr("data-id",testDrink2.idDrink);
+
             //variables for random drink three
             let testDrink3 = response.drinks[Math.floor(Math.random() * (response.drinks.length - 0 + 1)) + 0];
             let testDrinkImg3 = testDrink3.strDrinkThumb;
             let imgLocation3 = $("<img>").attr("src", testDrinkImg3)
+            imgLocation3.attr("data-id",testDrink3.idDrink);
+
             //random drink one to DOM
             $("#drinkThreeRandOne").text(testDrink1.strDrink);
             $("#drinkThreeRandOne").append(imgLocation);
@@ -260,9 +271,8 @@ function renderSavedDrinks(list) {
 
 //function to show instructions upon clicking pic
 
-function renderIns(){
-    var drinkID = $(this).attr("data-id");
-    queryUrlID = "https://the-cocktail-db.p.rapidapi.com/lookup.php?i="+drinkID;
+function renderIns(id){
+    queryUrlID = "https://the-cocktail-db.p.rapidapi.com/lookup.php?i="+id;
 
     $.ajax({
         url: queryUrlID,
@@ -276,3 +286,7 @@ function renderIns(){
     })
 }
 
+$(".back").on("click", ".list-group-item > img", function(event){
+    const imgID = event.target.attributes[1].value
+    renderIns(imgID);
+})
