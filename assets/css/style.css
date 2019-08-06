@@ -32,7 +32,6 @@
     width: 1300px;
     margin: 0 auto;
     padding: 5px 40px 20px 40px;
-    margin-top: 300px;
 }
 
 
@@ -54,10 +53,6 @@
 	background-repeat: no-repeat;
     background-size: cover;
     box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
-}
-
-.return{
-    text-align: center;
 }
 
 /* #spacer { */
