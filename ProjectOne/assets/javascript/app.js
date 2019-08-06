@@ -5,10 +5,10 @@
  */
 
 let file = document.getElementById("fileInput");
-let picture
 $("#fileInput").change(function (e) {
    //console.log(e.target.files[0])
    $("#pictureSubmit").on("click", function () { submitPicture(e.target.files[0]) })
+   $("#filename").text(e.target.files[0])
    previewFile()
 });
 function previewFile() {
@@ -209,7 +209,7 @@ $("#pictureSubmit").on("click", function () {
             $(".invisible").removeClass("invisible");
 
             $(".return").on("click", function (e) {
-                $("#title-change").html("Title Here");
+                $("#title-change").html("Intoxicating Mood");
             });
         });
     });

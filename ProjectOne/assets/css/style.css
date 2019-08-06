@@ -18,6 +18,7 @@
     z-index: 1030;
     background: rgba(0, 0, 0, 0.651);;
     box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+    font-family: 'Courier New', Courier, monospace
 
     
 }
@@ -85,4 +86,12 @@
     margin: 40px;
 }
 
+#filename {
+    background: white;
+    color: grey;
+}
+
+a {
+    color: white;
+    font-family: 'Courier New', Courier, monospace
 }
