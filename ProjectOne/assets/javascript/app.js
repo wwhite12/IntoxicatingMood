@@ -172,14 +172,15 @@ $("#pictureSubmit").on("click", function () {
             $("#drinkThreeRandThree").text(testDrink3.strDrink);
             $("#drinkThreeRandThree").append(imgLocation3);
 
+            //reveals hidden cards with above information
+            $(".invisible").removeClass("invisible");
+
+            $(".return").on("click", function (e) {
+                $("#title-change").html("Title Here");
+            });
         });
     });
-    //reveals hidden cards with above information
-    $(".invisible").removeClass("invisible");
 
-    $(".return").on("click", function(e){
-        $("#title-change").html("Title Here");
-    });
 
 
     //Javascript for smooth-scroll 
@@ -214,10 +215,10 @@ $("#pictureSubmit").on("click", function () {
 
 
 //function to add drink to a local storage item when user clicks
-$(".list-class-item").on("click", function() {
+$(".list-class-item").on("click", function () {
     drinkName = this.id;
-    if(confirm("Save Drink?") === true) {
-    localStorage.setItem("drinkName", drinkName);
+    if (confirm("Save Drink?") === true) {
+        localStorage.setItem("drinkName", drinkName);
     };
 });
 
@@ -225,7 +226,7 @@ function renderSavedDrinks(list) {
     $("#").empty();  //empties out html
 
     //render drink list
-    for(let i = 0; i < list.length; i++) {
+    for (let i = 0; i < list.length; i++) {
         var drinkItem = $("<p>");
         drinkItem.text(list[i]);
     }
@@ -234,15 +235,16 @@ function renderSavedDrinks(list) {
 /*shows picture when uploaded*/
 /* please TELL ME if you want to delete so I can stop re-adding all my code :) ~Ari */
 
-$("#fileInput").change ( function (e) {
+$("#fileInput").change(function (e) {
     //console.log(e.target.files[0])
     $("#pictureSubmit").on("click", function () { submitPicture(e.target.files[0]) })
-    previewFile()});
+    previewFile()
+});
 
-function previewFile(){
-    var preview = document.querySelector('img'); 
-    var file    = document.querySelector('input[type=file]').files[0]; 
-    var reader  = new FileReader();
+function previewFile() {
+    var preview = document.querySelector('img');
+    var file = document.querySelector('input[type=file]').files[0];
+    var reader = new FileReader();
 
     reader.onloadend = function () {
         preview.src = reader.result;
@@ -260,9 +262,9 @@ function previewFile(){
 
 /* controls age confirm modal*/
 
-$("#ageYes").on("click", function(){
+$("#ageYes").on("click", function () {
     $(".is-active").removeClass("is-active");
 })
-$("#ageNo").on("click", function(){
+$("#ageNo").on("click", function () {
     location.href = 'http://www.google.com';
 })
