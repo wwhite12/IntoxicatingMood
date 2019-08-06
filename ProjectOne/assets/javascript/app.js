@@ -95,15 +95,21 @@ $("#pictureSubmit").on("click", function () {
             let testDrink3 = response.drinks[Math.floor(Math.random() * ((response.drinks.length - 1) - 0 + 1)) + 0];
             let testDrinkImg3 = testDrink3.strDrinkThumb;
             let imgLocation3 = $("<img>").attr("src", testDrinkImg3)
+            
+            //clear any existing prior jquery content
+            $("#drinkOneRandOne").empty();
+            $("#drinkOneRandTwo").empty();
+            $("#drinkOneRandThree").empty();
             //random drink one to DOM
-            $("#drinkOneRandOne").text(testDrink1.strDrink);
             $("#drinkOneRandOne").append(imgLocation);
+            console.log(imgLocation);
+            $("#drinkOneRandOne").append(imgLocation).append("<div class='middle'><div class='text'>" + testDrink1.strDrink + "</div></div>");
             //random drink two to DOM
-            $("#drinkOneRandTwo").text(testDrink2.strDrink);
             $("#drinkOneRandTwo").append(imgLocation2);
+            $("#drinkOneRandTwo").append(imgLocation2).append("<div class='middle'><div class='text'>" + testDrink2.strDrink + "</div></div>");
             //random drink three to DOM
-            $("#drinkOneRandThree").text(testDrink3.strDrink);
             $("#drinkOneRandThree").append(imgLocation3);
+            $("#drinkOneRandThree").append(imgLocation3).append("<div class='middle'><div class='text'>" + testDrink3.strDrink + "</div></div>");
         });
 
         //ajax query for drinks for secondary mood
@@ -128,15 +134,21 @@ $("#pictureSubmit").on("click", function () {
             let testDrink3 = response.drinks[Math.floor(Math.random() * (response.drinks.length - 0 + 1)) + 0];
             let testDrinkImg3 = testDrink3.strDrinkThumb;
             let imgLocation3 = $("<img>").attr("src", testDrinkImg3)
+            
+            //clear any existing prior jquery content
+            $("#drinkTwoRandOne").empty();
+            $("#drinkTwoRandTwo").empty();
+            $("#drinkTwoRandThree").empty();
+            
             //random drink one to DOM
-            $("#drinkTwoRandOne").text(testDrink1.strDrink);
             $("#drinkTwoRandOne").append(imgLocation);
+            $("#drinkTwoRandOne").append(imgLocation).append("<div class='middle'><div class='text'>" + testDrink1.strDrink + "</div></div>");
             //random drink two to DOM
-            $("#drinkTwoRandTwo").text(testDrink2.strDrink);
             $("#drinkTwoRandTwo").append(imgLocation2);
+            $("#drinkTwoRandTwo").append(imgLocation2).append("<div class='middle'><div class='text'>" + testDrink2.strDrink + "</div></div>");
             //random drink three to DOM
-            $("#drinkTwoRandThree").text(testDrink3.strDrink);
             $("#drinkTwoRandThree").append(imgLocation3);
+            $("#drinkTwoRandThree").append(imgLocation3).append("<div class='middle'><div class='text'>" + testDrink3.strDrink + "</div></div>");
 
         });
 
@@ -162,15 +174,21 @@ $("#pictureSubmit").on("click", function () {
             let testDrink3 = response.drinks[Math.floor(Math.random() * (response.drinks.length - 0 + 1)) + 0];
             let testDrinkImg3 = testDrink3.strDrinkThumb;
             let imgLocation3 = $("<img>").attr("src", testDrinkImg3)
+
+            //clear any existing prior jquery content
+            $("#drinkThreeRandOne").empty();
+            $("#drinkThreeRandTwo").empty();
+            $("#drinkThreeRandThree").empty();
+
             //random drink one to DOM
-            $("#drinkThreeRandOne").text(testDrink1.strDrink);
             $("#drinkThreeRandOne").append(imgLocation);
+            $("#drinkThreeRandOne").append(imgLocation).append("<div class='middle'><div class='text'>" + testDrink1.strDrink + "</div></div>");
             //random drink two to DOM
-            $("#drinkThreeRandTwo").text(testDrink2.strDrink);
             $("#drinkThreeRandTwo").append(imgLocation2);
+            $("#drinkThreeRandTwo").append(imgLocation2).append("<div class='middle'><div class='text'>" + testDrink2.strDrink + "</div></div>");
             //random drink three to DOM
-            $("#drinkThreeRandThree").text(testDrink3.strDrink);
             $("#drinkThreeRandThree").append(imgLocation3);
+            $("#drinkThreeRandThree").append(imgLocation3).append("<div class='middle'><div class='text'>" + testDrink3.strDrink + "</div></div>");
 
         });
     });
