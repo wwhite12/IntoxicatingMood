@@ -4,15 +4,37 @@
  * last updated: 8/5/19
  */
 
+let file = document.getElementById("fileInput");
+let picture
+$("#fileInput").change(function (e) {
+    //console.log(e.target.files[0])
+    //    $("#pictureSubmit").on("click", function () { submitPicture(e.target.files[0]) })
+    previewFile()
+});
+function previewFile() {
+    var preview = document.querySelector('img');
+    var file = document.querySelector('input[type=file]').files[0];
+    var reader = new FileReader();
+    reader.onloadend = function () {
+        preview.src = reader.result;
+    }
+    if (file) {
+        reader.readAsDataURL(file); //reads the data as a URL
+    } else {
+        preview.src = "";
+    }
+};
+
+
 //emotionKey-object linking emotions to base alcohols
 const emotionKey = {
-    anger: "vodka",
-    disgust: "wine",
-    fear: "tequila",
-    happiness: "rum",
-    neutral: "gin",
-    sadness: "whiskey",
-    surprise: "champagne"
+    anger: ["vodka", "In Soviet Russia, vodka is angry at you."],
+    disgust: ["wine", "Disgusted? Grab a bottle of wine and vent about how stupid your boss is."],
+    fear: ["tequila", "Nothing ~screams~ fear like 20 shots of tequila.."],
+    happiness: ["rum", "Ever wonder how Captain Jack Sparrow is always so happy?"],
+    neutral: ["gin", "So neutral you'd think it's from Switzerland"],
+    sadness: ["whiskey", "Pair this with a country song and you'll cry all night"],
+    surprise: ["champagne", "To be clear, champagne is for good surprises.."]
 };
 
 let inputFile;
@@ -63,10 +85,15 @@ $("#pictureSubmit").on("click", function () {
         $("#moodName2").text(sortedEmotions[1][0]);
         $("#moodName3").text(sortedEmotions[2][0]);
 
+        $("#moodTextOne").text(emotionKey[sortedEmotions[0][0]][1]);
+        $(".card-text2").text(emotionKey[sortedEmotions[1][0]][1]);
+        $("#moodTextThree").text(emotionKey[sortedEmotions[2][0]][1]);
+
+
         //baseAlcohols declared--- will be replaced later with link between returned emotions and base alcohols
-        let baseAlcohol1 = emotionKey[sortedEmotions[0][0]];
-        let baseAlcohol2 = emotionKey[sortedEmotions[1][0]];
-        let baseAlcohol3 = emotionKey[sortedEmotions[2][0]];
+        let baseAlcohol1 = emotionKey[sortedEmotions[0][0]][0];
+        let baseAlcohol2 = emotionKey[sortedEmotions[1][0]][0];
+        let baseAlcohol3 = emotionKey[sortedEmotions[2][0]][0];
         // console.log(baseAlcohol1 + baseAlcohol2 + baseAlcohol3);
 
         //must have three different cocktail API queries for each base alcohol
@@ -86,23 +113,26 @@ $("#pictureSubmit").on("click", function () {
             //variables for random drink one
             let testDrink1 = response.drinks[Math.floor(Math.random() * ((response.drinks.length - 1) - 0 + 1)) + 0];
             let testDrinkImg = testDrink1.strDrinkThumb;
-            let imgLocation = $("<img>").attr("src", testDrinkImg)
+            console.log(testDrink1.idDrink);    //14978
+            let imgLocation = $("<img>").attr("src", testDrinkImg);
+            imgLocation.attr("data-id", testDrink1.idDrink);
             //variables for random drink two
             let testDrink2 = response.drinks[Math.floor(Math.random() * ((response.drinks.length - 1) - 0 + 1)) + 0];
             let testDrinkImg2 = testDrink2.strDrinkThumb;
             let imgLocation2 = $("<img>").attr("src", testDrinkImg2)
+            imgLocation2.attr("data-id", testDrink2.idDrink);
             //variables for random drink three
             let testDrink3 = response.drinks[Math.floor(Math.random() * ((response.drinks.length - 1) - 0 + 1)) + 0];
             let testDrinkImg3 = testDrink3.strDrinkThumb;
             let imgLocation3 = $("<img>").attr("src", testDrinkImg3)
-            
+            imgLocation3.attr("data-id", testDrink3.idDrink);
+
             //clear any existing prior jquery content
             $("#drinkOneRandOne").empty();
             $("#drinkOneRandTwo").empty();
             $("#drinkOneRandThree").empty();
             //random drink one to DOM
             $("#drinkOneRandOne").append(imgLocation);
-            console.log(imgLocation);
             $("#drinkOneRandOne").append(imgLocation).append("<div class='middle'><div class='text'>" + testDrink1.strDrink + "</div></div>");
             //random drink two to DOM
             $("#drinkOneRandTwo").append(imgLocation2);
@@ -126,14 +156,19 @@ $("#pictureSubmit").on("click", function () {
             let testDrink1 = response.drinks[Math.floor(Math.random() * (response.drinks.length - 0 + 1)) + 0];
             let testDrinkImg = testDrink1.strDrinkThumb;
             let imgLocation = $("<img>").attr("src", testDrinkImg)
+            imgLocation.attr("data-id", testDrink1.idDrink);
+
             //variables for random drink two
             let testDrink2 = response.drinks[Math.floor(Math.random() * (response.drinks.length - 0 + 1)) + 0];
             let testDrinkImg2 = testDrink2.strDrinkThumb;
             let imgLocation2 = $("<img>").attr("src", testDrinkImg2)
+            imgLocation2.attr("data-id", testDrink2.idDrink);
+
             //variables for random drink three
             let testDrink3 = response.drinks[Math.floor(Math.random() * (response.drinks.length - 0 + 1)) + 0];
             let testDrinkImg3 = testDrink3.strDrinkThumb;
             let imgLocation3 = $("<img>").attr("src", testDrinkImg3)
+            imgLocation3.attr("data-id", testDrink3.idDrink);
             
             //clear any existing prior jquery content
             $("#drinkTwoRandOne").empty();
@@ -143,6 +178,7 @@ $("#pictureSubmit").on("click", function () {
             //random drink one to DOM
             $("#drinkTwoRandOne").append(imgLocation);
             $("#drinkTwoRandOne").append(imgLocation).append("<div class='middle'><div class='text'>" + testDrink1.strDrink + "</div></div>");
+
             //random drink two to DOM
             $("#drinkTwoRandTwo").append(imgLocation2);
             $("#drinkTwoRandTwo").append(imgLocation2).append("<div class='middle'><div class='text'>" + testDrink2.strDrink + "</div></div>");
@@ -165,20 +201,26 @@ $("#pictureSubmit").on("click", function () {
             //variables for random drink one
             let testDrink1 = response.drinks[Math.floor(Math.random() * (response.drinks.length - 0 + 1)) + 0];
             let testDrinkImg = testDrink1.strDrinkThumb;
-            let imgLocation = $("<img>").attr("src", testDrinkImg)
+            let imgLocation = $("<img>").attr("src", testDrinkImg);
+            imgLocation.attr("data-id", testDrink1.idDrink);
+
             //variables for random drink two
             let testDrink2 = response.drinks[Math.floor(Math.random() * (response.drinks.length - 0 + 1)) + 0];
             let testDrinkImg2 = testDrink2.strDrinkThumb;
-            let imgLocation2 = $("<img>").attr("src", testDrinkImg2)
+            let imgLocation2 = $("<img>").attr("src", testDrinkImg2);
+            imgLocation2.attr("data-id", testDrink2.idDrink);
+
             //variables for random drink three
             let testDrink3 = response.drinks[Math.floor(Math.random() * (response.drinks.length - 0 + 1)) + 0];
             let testDrinkImg3 = testDrink3.strDrinkThumb;
             let imgLocation3 = $("<img>").attr("src", testDrinkImg3)
+            imgLocation3.attr("data-id", testDrink3.idDrink);
 
             //clear any existing prior jquery content
             $("#drinkThreeRandOne").empty();
             $("#drinkThreeRandTwo").empty();
             $("#drinkThreeRandThree").empty();
+
 
             //random drink one to DOM
             $("#drinkThreeRandOne").append(imgLocation);
@@ -190,14 +232,15 @@ $("#pictureSubmit").on("click", function () {
             $("#drinkThreeRandThree").append(imgLocation3);
             $("#drinkThreeRandThree").append(imgLocation3).append("<div class='middle'><div class='text'>" + testDrink3.strDrink + "</div></div>");
 
+            //reveals hidden cards with above information
+            $(".invisible").removeClass("invisible");
+
+            $(".return").on("click", function (e) {
+                $("#title-change").html("Title Here");
+            });
         });
     });
-    //reveals hidden cards with above information
-    $(".invisible").removeClass("invisible");
 
-    $(".return").on("click", function(e){
-        $("#title-change").html("Title Here");
-    });
 
 
     //Javascript for smooth-scroll 
@@ -232,10 +275,10 @@ $("#pictureSubmit").on("click", function () {
 
 
 //function to add drink to a local storage item when user clicks
-$(".list-class-item").on("click", function() {
+$(".list-class-item").on("click", function () {
     drinkName = this.id;
-    if(confirm("Save Drink?") === true) {
-    localStorage.setItem("drinkName", drinkName);
+    if (confirm("Save Drink?") === true) {
+        localStorage.setItem("drinkName", drinkName);
     };
 });
 
@@ -243,8 +286,107 @@ function renderSavedDrinks(list) {
     $("#").empty();  //empties out html
 
     //render drink list
-    for(let i = 0; i < list.length; i++) {
+    for (let i = 0; i < list.length; i++) {
         var drinkItem = $("<p>");
         drinkItem.text(list[i]);
     }
 }
+
+//function to show instructions upon clicking pic
+
+function renderIns(id) {
+    queryUrlID = "https://the-cocktail-db.p.rapidapi.com/lookup.php?i=" + id;
+
+    $.ajax({
+        url: queryUrlID,
+        method: "GET",
+        headers: {
+            "X-RapidAPI-Host": "the-cocktail-db.p.rapidapi.com",
+            "X-RapidAPI-Key": "d1d151fcf6msha9240c9ffb25a4bp14a1ddjsn58db10897e38"
+        }
+    }).then(function (response) {
+        console.log(response.drinks[0].strInstructions)
+        $("#modalDrinkTitle").text(response.drinks[0].strDrink);
+        $("#modalDrinkFacts").text("Ingredients: " + response.drinks[0].strIngredient1)
+        if (response.drinks[0].strIngredient2) {
+            $("#modalDrinkFacts").append(", " + response.drinks[0].strIngredient2);
+        }
+        if (response.drinks[0].strIngredient3) {
+            $("#modalDrinkFacts").append(", " + response.drinks[0].strIngredient3);
+        }
+        if (response.drinks[0].strIngredient4) {
+            $("#modalDrinkFacts").append(", " + response.drinks[0].strIngredient4);
+        }
+        if (response.drinks[0].strIngredient5) {
+            $("#modalDrinkFacts").append(", " + response.drinks[0].strIngredient5);
+        }
+        if (response.drinks[0].strIngredient6) {
+            $("#modalDrinkFacts").append(", " + response.drinks[0].strIngredient6);
+        }
+        if (response.drinks[0].strIngredient7) {
+            $("#modalDrinkFacts").append(", " + response.drinks[0].strIngredient7);
+        }
+        if (response.drinks[0].strIngredient8) {
+            $("#modalDrinkFacts").append(", " + response.drinks[0].strIngredient8);
+        }
+        if (response.drinks[0].strIngredient9) {
+            $("#modalDrinkFacts").append(", " + response.drinks[0].strIngredient9);
+        }
+        if (response.drinks[0].strIngredient10) {
+            $("#modalDrinkFacts").append(", " + response.drinks[0].strIngredient10);
+        }
+        if (response.drinks[0].strIngredient11) {
+            $("#modalDrinkFacts").append(", " + response.drinks[0].strIngredient11);
+        }
+        if (response.drinks[0].strIngredient12) {
+            $("#modalDrinkFacts").append(", " + response.drinks[0].strIngredient12);
+        }
+        if (response.drinks[0].strIngredient13) {
+            $("#modalDrinkFacts").append(", " + response.drinks[0].strIngredient13);
+        }
+        if (response.drinks[0].strIngredient14) {
+            $("#modalDrinkFacts").append(", " + response.drinks[0].strIngredient14);
+        }
+        if (response.drinks[0].strIngredient15) {
+            $("#modalDrinkFacts").append(", " + response.drinks[0].strIngredient15);
+        }
+        $("#modalDrinkFacts").append("<br> Instructions: " + response.drinks[0].strInstructions);
+
+        //for(let i = 1;i<= 15; i++){
+        // if((response.drinks[0].strIngredient+i)){
+        //    console.log(response.drinks[0].strIngredient+i);
+        //}
+        //console.log(response.drinks[0].strIngredient+[i]);
+        //}
+    });
+}
+
+$(".back").on("click", ".list-group-item > img", function (event) {
+
+    $("#drinkModal").modal("show");
+
+    const imgID = event.target.attributes[1].value
+    renderIns(imgID);
+})
+
+
+/* controls age confirm modal*/
+//wanted it to save 
+function ageConfirmModal() {
+    if (localStorage.getItem("ageConf") == "true") {
+        $(".is-active").removeClass("is-active");
+    } if (localStorage.getItem("ageConf") == "false") {
+        location.href = 'http://www.google.com';
+    } else {
+        $("#ageYes").on("click", function () {
+            $(".is-active").removeClass("is-active");
+            localStorage.setItem("ageConf", "true")
+
+        })
+        $("#ageNo").on("click", function () {
+            location.href = 'http://www.google.com';
+            localStorage.setItem("ageConf", "false")
+        })
+    }
+}
+ageConfirmModal();
