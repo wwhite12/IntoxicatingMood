@@ -15,7 +15,7 @@
     top: 0;
     right: 0;
     left: 0;
-    z-index: 1030;
+    z-index: 103;
     background: rgba(0, 0, 0, 0.651);;
     box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
 
@@ -65,6 +65,10 @@
     /* width: 100%; */
 /* } */
 
+#drinkModal{
+    z-index: 20000;
+}
+
 .modal.ageConfirm {
     z-index: 1100;
 }
@@ -85,4 +89,4 @@
     margin: 40px;
 }
 
-}
+
