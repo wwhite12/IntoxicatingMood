@@ -113,6 +113,7 @@ $("#pictureSubmit").on("click", function () {
             //variables for random drink one
             let testDrink1 = response.drinks[Math.floor(Math.random() * ((response.drinks.length - 1) - 0 + 1)) + 0];
             let testDrinkImg = testDrink1.strDrinkThumb;
+            console.log(testDrink1.idDrink);    //14978
             let imgLocation = $("<img>").attr("src", testDrinkImg);
             imgLocation.attr("data-id",testDrink1.idDrink);
             //variables for random drink two
@@ -127,7 +128,7 @@ $("#pictureSubmit").on("click", function () {
             imgLocation3.attr("data-id",testDrink3.idDrink);
             //random drink one to DOM
             $("#drinkOneRandOne").text(testDrink1.strDrink);
-            $("#drinkOneRandOne").append(imgLocation);
+            $("#drinkOneRandOne").append(imgLocation).append("<div class='middle'>").append("<div class='text'>" + testDrink1.strDrink);
             //random drink two to DOM
             $("#drinkOneRandTwo").text(testDrink2.strDrink);
             $("#drinkOneRandTwo").append(imgLocation2);
@@ -158,9 +159,11 @@ $("#pictureSubmit").on("click", function () {
             let testDrink3 = response.drinks[Math.floor(Math.random() * (response.drinks.length - 0 + 1)) + 0];
             let testDrinkImg3 = testDrink3.strDrinkThumb;
             let imgLocation3 = $("<img>").attr("src", testDrinkImg3)
+
             //random drink one to DOM
             $("#drinkTwoRandOne").text(testDrink1.strDrink);
             $("#drinkTwoRandOne").append(imgLocation);
+
             //random drink two to DOM
             $("#drinkTwoRandTwo").text(testDrink2.strDrink);
             $("#drinkTwoRandTwo").append(imgLocation2);
@@ -260,7 +263,7 @@ function renderSavedDrinks(list) {
 
 //function to show instructions upon clicking pic
 
-function renderIns(){
+$("li").click(function() {
     var drinkID = $(this).attr("data-id");
     queryUrlID = "https://the-cocktail-db.p.rapidapi.com/lookup.php?i="+drinkID;
 
@@ -272,7 +275,7 @@ function renderIns(){
             "X-RapidAPI-Key": "d1d151fcf6msha9240c9ffb25a4bp14a1ddjsn58db10897e38"
                 }
     }).then(function(response){
-        console.log(response.drinks[0].strInstructions)
+        console.log(response);
     })
-}
+});
 
