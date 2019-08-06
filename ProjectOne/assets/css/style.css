@@ -65,4 +65,24 @@
     /* width: 100%; */
 /* } */
 
+.modal.ageConfirm {
+    z-index: 1100;
+}
 
+.modal-background.ageConfirm {
+    background-image: url("http://tequilacowboy.com/wp-content/uploads/2015/11/bg-wood.jpg");
+}
+
+.modal-content.ageConfirm {
+    background: black;
+    color: white;
+    height: 960px;
+    width: 720px;
+    line-height: 140px;
+    font-size: 48px;
+}
+#ageYoN {
+    margin: 40px;
+}
+
+}
