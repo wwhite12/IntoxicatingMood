@@ -285,6 +285,47 @@ function renderIns(id){
         console.log(response.drinks[0].strInstructions)
         $("#modalDrinkTitle").text(response.drinks[0].strDrink);
         $("#modalDrinkFacts").text("Ingredients: " + response.drinks[0].strIngredient1)
+        if(response.drinks[0].strIngredient2){
+        $("#modalDrinkFacts").append(", "+ response.drinks[0].strIngredient2);}
+        if(response.drinks[0].strIngredient3){
+            $("#modalDrinkFacts").append(", " + response.drinks[0].strIngredient3);
+        }
+        if(response.drinks[0].strIngredient4){
+            $("#modalDrinkFacts").append(", " + response.drinks[0].strIngredient4);
+        }
+        if(response.drinks[0].strIngredient5){
+            $("#modalDrinkFacts").append(", " + response.drinks[0].strIngredient5);
+        }
+        if(response.drinks[0].strIngredient6){
+            $("#modalDrinkFacts").append(", " + response.drinks[0].strIngredient6);
+        }
+        if(response.drinks[0].strIngredient7){
+            $("#modalDrinkFacts").append(", " + response.drinks[0].strIngredient7);
+        }
+        if(response.drinks[0].strIngredient8){
+            $("#modalDrinkFacts").append(", " + response.drinks[0].strIngredient8);
+        }
+        if(response.drinks[0].strIngredient9){
+            $("#modalDrinkFacts").append(", " + response.drinks[0].strIngredient9);
+        }
+        if(response.drinks[0].strIngredient10){
+            $("#modalDrinkFacts").append(", " + response.drinks[0].strIngredient10);
+        }
+        if(response.drinks[0].strIngredient11){
+            $("#modalDrinkFacts").append(", " + response.drinks[0].strIngredient11);
+        }
+        if(response.drinks[0].strIngredient12){
+            $("#modalDrinkFacts").append(", " + response.drinks[0].strIngredient12);
+        }
+        if(response.drinks[0].strIngredient13){
+            $("#modalDrinkFacts").append(", " + response.drinks[0].strIngredient13);
+        }
+        if(response.drinks[0].strIngredient14){
+            $("#modalDrinkFacts").append(", " + response.drinks[0].strIngredient14);
+        }
+        if(response.drinks[0].strIngredient15){
+            $("#modalDrinkFacts").append(", " + response.drinks[0].strIngredient15);
+        }
         $("#modalDrinkFacts").append("<br>" +response.drinks[0].strInstructions);
 
         //for(let i = 1;i<= 15; i++){
