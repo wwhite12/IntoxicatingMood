@@ -86,7 +86,7 @@ $("#pictureSubmit").on("click", function () {
         $("#moodName3").text(sortedEmotions[2][0]);
 
         $("#moodTextOne").text(emotionKey[sortedEmotions[0][0]][1]);
-        $(".card-text2").text(emotionKey[sortedEmotions[1][0]][1]);
+        $("#moodTextTwo").text(emotionKey[sortedEmotions[1][0]][1]);
         $("#moodTextThree").text(emotionKey[sortedEmotions[2][0]][1]);
 
 
