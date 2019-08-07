@@ -103,20 +103,15 @@ $("#pictureSubmit").on("click", function () {
         $("#moodTextThree").text(emotionKey[sortedEmotions[2][0]][1]);
 
 
-        //baseAlcohols declared--- will be replaced later with link between returned emotions and base alcohols
-<<<<<<< HEAD
-        let baseAlcohol1 = emotionKey[sortedEmotions[0][0]];
-        let baseAlcohol2 = emotionKey[sortedEmotions[1][0]];
-        let baseAlcohol3 = emotionKey[sortedEmotions[2][0]];
-=======
-        let baseAlcohol1 = emotionKey[sortedEmotions[0][0]][0];
+        
+    //baseAlcohols declared--- will be replaced later with link between returned emotions and base alcohols
+    
+ 
+    let baseAlcohol1 = emotionKey[sortedEmotions[0][0]][0];
         let baseAlcohol2 = emotionKey[sortedEmotions[1][0]][0];
         let baseAlcohol3 = emotionKey[sortedEmotions[2][0]][0];
-<<<<<<< HEAD
         // console.log(baseAlcohol1 + baseAlcohol2 + baseAlcohol3);
->>>>>>> 932f150560abb72a72ad0d6ef7b9cb2798248b76
-=======
->>>>>>> ea3b5c989d0809097f7b3cc3422b66c58f7e26b5
+    
 
         //must have three different cocktail API queries for each base alcohol
         const queryDrinkURL1 = "https://the-cocktail-db.p.rapidapi.com/filter.php?i=" + baseAlcohol1;
@@ -139,6 +134,7 @@ $("#pictureSubmit").on("click", function () {
             //variables for random drink one
             let testDrink1 = indexes[0];
             let testDrinkImg = testDrink1.strDrinkThumb;
+            console.log(testDrink1.idDrink);    //14978
             let imgLocation = $("<img>").attr("src", testDrinkImg);
             imgLocation.attr("data-id", testDrink1.idDrink);
             //variables for random drink two
@@ -201,12 +197,12 @@ $("#pictureSubmit").on("click", function () {
             let testDrinkImg3 = testDrink3.strDrinkThumb;
             let imgLocation3 = $("<img>").attr("src", testDrinkImg3)
             imgLocation3.attr("data-id", testDrink3.idDrink);
-
+            
             //clear any existing prior jquery content
             $("#drinkTwoRandOne").empty();
             $("#drinkTwoRandTwo").empty();
             $("#drinkTwoRandThree").empty();
-
+            
             //random drink one to DOM
             $("#drinkTwoRandOne").append(imgLocation);
             $("#drinkTwoRandOne").append(imgLocation).append("<div class='middle'><div class='text'>" + testDrink1.strDrink + "</div></div>");
@@ -279,7 +275,7 @@ $("#pictureSubmit").on("click", function () {
             });
         });
     });
-<<<<<<< HEAD
+
     
     //reveals invisible cards with above information
     $(".invisible").removeClass("invisible");
@@ -288,14 +284,6 @@ $("#pictureSubmit").on("click", function () {
     $(".return").on("click", function(e){
         $("#title-change").html("Title Here");
     });
-=======
-
-<<<<<<< HEAD
->>>>>>> 932f150560abb72a72ad0d6ef7b9cb2798248b76
-
-
-=======
->>>>>>> ea3b5c989d0809097f7b3cc3422b66c58f7e26b5
     //Javascript for smooth-scroll 
     $('a[href*="#"]')
         .not('[href="#"]')
@@ -334,9 +322,9 @@ $(document).on("click", ".text", function (e) {
 
     $("#drinkModal").modal("show");
     renderIns(drinkID);
-    // if (confirm("Save Drink?") === true) {
-    //     localStorage.setItem("drinkID", drinkID);
-    // };
+    if (confirm("Save Drink?") === true) {
+        localStorage.setItem("drinkID", drinkID);
+    };
 });
 
 function renderSavedDrinks(list) {
@@ -439,20 +427,20 @@ function renderIns(id) {
 /* controls age confirm modal*/
 //wanted it to save 
 function ageConfirmModal() {
-            if (localStorage.getItem("ageConf") == "true") {
-                $(".is-active").removeClass("is-active");
-            } if (localStorage.getItem("ageConf") == "false") {
-                location.href = 'http://www.google.com';
-            } else {
-                $("#ageYes").on("click", function () {
-                    $(".is-active").removeClass("is-active");
-                    localStorage.setItem("ageConf", "true")
+    if (localStorage.getItem("ageConf") == "true") {
+        $(".is-active").removeClass("is-active");
+    } if (localStorage.getItem("ageConf") == "false") {
+        location.href = 'http://www.google.com';
+    } else {
+        $("#ageYes").on("click", function () {
+            $(".is-active").removeClass("is-active");
+            localStorage.setItem("ageConf", "true")
 
-                })
-                $("#ageNo").on("click", function () {
-                    location.href = 'http://www.google.com';
-                    localStorage.setItem("ageConf", "false")
-                })
-            }
-        }
+        })
+        $("#ageNo").on("click", function () {
+            location.href = 'http://www.google.com';
+            localStorage.setItem("ageConf", "false")
+        })
+    }
+}
 ageConfirmModal();
