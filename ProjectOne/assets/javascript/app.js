@@ -271,7 +271,7 @@ $("#pictureSubmit").on("click", function () {
             $(".invisible").removeClass("invisible");
 
             $(".return").on("click", function (e) {
-                $("#title-change").html("Title Here");
+                $("#title-change").html("Intoxicating Emotions");
             });
         });
     });
