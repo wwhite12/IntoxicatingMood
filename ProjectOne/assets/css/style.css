@@ -60,19 +60,19 @@
     text-align: center;
 }
 
- 
-  .middle {
-    transition: .5s ease;
-    opacity: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    text-align: center;
-  } 
+ /*container for text fade-in on hover*/
+.middle {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+} 
 
-/* Brightness-zoom Container */
+/* Brightness-zoom image ontainer */
 .img-hover-zoom--brightness img {
     transition: transform 1.5s, filter 1.5s ease-in-out;
     transform-origin: center center;
@@ -80,15 +80,15 @@
     backface-visibility: hidden
   }
   
-  /* The Transformation */
+  /* image class transformation on hover*/
   .img-hover-zoom--brightness:hover img {
     filter: brightness(100%);
     transform: scale(1.1);
   }
-/* The Image container */
+/* image container class*/
 .img-hover-zoom {
     height: 165px;
-    overflow: hidden; /* Removing this will break the effects */
+    overflow: hidden; 
   }
   img {
       height: 165px;
@@ -138,4 +138,30 @@
     margin: 40px;
 }
 
+/* Tooltip container */
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+ 
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 1;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
 
