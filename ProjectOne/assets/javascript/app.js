@@ -6,6 +6,7 @@
 
 let file = document.getElementById("fileInput");
 let picture
+let drinkIDList=[];
 $("#fileInput").change(function (e) {
     //console.log(e.target.files[0])
     //    $("#pictureSubmit").on("click", function () { submitPicture(e.target.files[0]) })
@@ -132,12 +133,15 @@ $("#pictureSubmit").on("click", function () {
             //random drink one to DOM
             $("#drinkOneRandOne").append(imgLocation);
             $("#drinkOneRandOne").append(imgLocation).append("<div class='middle'><div class='text'>" + testDrink1.strDrink + "</div></div>");
+            $("#drinkOneRandOne div:last").attr("id", testDrink1.idDrink);
             //random drink two to DOM
             $("#drinkOneRandTwo").append(imgLocation2);
             $("#drinkOneRandTwo").append(imgLocation2).append("<div class='middle'><div class='text'>" + testDrink2.strDrink + "</div></div>");
+            $("#drinkOneRandTwo div:last").attr("id", testDrink2.idDrink);
             //random drink three to DOM
             $("#drinkOneRandThree").append(imgLocation3);
             $("#drinkOneRandThree").append(imgLocation3).append("<div class='middle'><div class='text'>" + testDrink3.strDrink + "</div></div>");
+            $("#drinkOneRandThree div:last").attr("id", testDrink3.idDrink);
         });
 
         //ajax query for drinks for secondary mood
@@ -176,14 +180,15 @@ $("#pictureSubmit").on("click", function () {
             //random drink one to DOM
             $("#drinkTwoRandOne").append(imgLocation);
             $("#drinkTwoRandOne").append(imgLocation).append("<div class='middle'><div class='text'>" + testDrink1.strDrink + "</div></div>");
-
+            $("#drinkTwoRandOne div:last").attr("id", testDrink1.idDrink);
             //random drink two to DOM
             $("#drinkTwoRandTwo").append(imgLocation2);
             $("#drinkTwoRandTwo").append(imgLocation2).append("<div class='middle'><div class='text'>" + testDrink2.strDrink + "</div></div>");
+            $("#drinkTwoRandTwo div:last").attr("id", testDrink2.idDrink);
             //random drink three to DOM
             $("#drinkTwoRandThree").append(imgLocation3);
             $("#drinkTwoRandThree").append(imgLocation3).append("<div class='middle'><div class='text'>" + testDrink3.strDrink + "</div></div>");
-
+            $("#drinkTwoRandThree div:last").attr("id", testDrink3.idDrink);
         });
 
         //ajax query for random drink for third mood
@@ -223,12 +228,15 @@ $("#pictureSubmit").on("click", function () {
             //random drink one to DOM
             $("#drinkThreeRandOne").append(imgLocation);
             $("#drinkThreeRandOne").append(imgLocation).append("<div class='middle'><div class='text'>" + testDrink1.strDrink + "</div></div>");
+            $("#drinkThreeRandOne div:last").attr("id", testDrink1.idDrink);
             //random drink two to DOM
             $("#drinkThreeRandTwo").append(imgLocation2);
             $("#drinkThreeRandTwo").append(imgLocation2).append("<div class='middle'><div class='text'>" + testDrink2.strDrink + "</div></div>");
+            $("#drinkThreeRandTwo div:last").attr("id", testDrink2.idDrink);
             //random drink three to DOM
             $("#drinkThreeRandThree").append(imgLocation3);
             $("#drinkThreeRandThree").append(imgLocation3).append("<div class='middle'><div class='text'>" + testDrink3.strDrink + "</div></div>");
+            $("#drinkThreeRandThree div:last").attr("id", testDrink3.idDrink);
 
             //reveals hidden cards with above information
             $(".invisible").removeClass("invisible");
@@ -271,11 +279,15 @@ $("#pictureSubmit").on("click", function () {
 
 
 //function to add drink to a local storage item when user clicks
-$(".list-class-item").on("click", function () {
-    drinkName = this.id;
-    if (confirm("Save Drink?") === true) {
-        localStorage.setItem("drinkName", drinkName);
-    };
+$(document).on("click", ".text", function (e) {
+    e.preventDefault;
+    drinkID = this.id;
+
+    $("#drinkModal").modal("show");
+    renderIns(drinkID);
+    // if (confirm("Save Drink?") === true) {
+    //     localStorage.setItem("drinkID", drinkID);
+    // };
 });
 
 function renderSavedDrinks(list) {
@@ -348,41 +360,50 @@ function renderIns(id) {
         }
         $("#modalDrinkFacts").append("<br> Instructions: " + response.drinks[0].strInstructions);
 
-        //for(let i = 1;i<= 15; i++){
-        // if((response.drinks[0].strIngredient+i)){
-        //    console.log(response.drinks[0].strIngredient+i);
-        //}
-        //console.log(response.drinks[0].strIngredient+[i]);
-        //}
+        $("#drinkSave").on("click", function () {
+            console.log(id);
+            drinkIDList.push(id);
+            $("#drinkModal").modal("hide");
+            console.log(drinkIDList);
+            localStorage.setItem("drinkIDs",JSON.stringify(drinkIDList));
+
+            //for(let i = 1;i<= 15; i++){
+            // if((response.drinks[0].strIngredient+i)){
+            //    console.log(response.drinks[0].strIngredient+i);
+            //}
+            //console.log(response.drinks[0].strIngredient+[i]);
+            //}
+        });
     });
 }
 
-$(".back").on("click", ".list-group-item > img", function (event) {
 
-    $("#drinkModal").modal("show");
+// $(".back").on("click", ".list-group-item > img", function (event) {
 
-    const imgID = event.target.attributes[1].value
-    renderIns(imgID);
-})
+//     $("#drinkModal").modal("show");
+
+//     const imgID = event.target.attributes[1].value
+//     renderIns(imgID);
+// })
 
 
 /* controls age confirm modal*/
 //wanted it to save 
 function ageConfirmModal() {
-    if (localStorage.getItem("ageConf") == "true") {
-        $(".is-active").removeClass("is-active");
-    } if (localStorage.getItem("ageConf") == "false") {
-        location.href = 'http://www.google.com';
-    } else {
-        $("#ageYes").on("click", function () {
-            $(".is-active").removeClass("is-active");
-            localStorage.setItem("ageConf", "true")
+            if (localStorage.getItem("ageConf") == "true") {
+                $(".is-active").removeClass("is-active");
+            } if (localStorage.getItem("ageConf") == "false") {
+                location.href = 'http://www.google.com';
+            } else {
+                $("#ageYes").on("click", function () {
+                    $(".is-active").removeClass("is-active");
+                    localStorage.setItem("ageConf", "true")
 
-        })
-        $("#ageNo").on("click", function () {
-            location.href = 'http://www.google.com';
-            localStorage.setItem("ageConf", "false")
-        })
-    }
-}
+                })
+                $("#ageNo").on("click", function () {
+                    location.href = 'http://www.google.com';
+                    localStorage.setItem("ageConf", "false")
+                })
+            }
+        }
 ageConfirmModal();
