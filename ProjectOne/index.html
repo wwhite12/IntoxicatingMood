@@ -54,7 +54,7 @@
             <div class="jumbotron jumbotron-fluid title">
                 <div class="container">
                     <h1 id="title-change" class="display-4">Intoxicating Mood</h1>
-                    <p class="lead">Find out what new cocktail you're feeling like!
+                    <p class="lead">Facial Emotion Recognition Drink Selector
                     </p>
 
                 </div>
@@ -80,22 +80,26 @@
                                         <i class="fas fa-upload"></i>
                                     </span>
                                     <span class="file-label" id="file">
-                                        <img src="" class="image is-128x128" alt="Choose a picture…">
+                                        <img src="" class="image is-128x128" alt="Click to Upload Picture">
+                                        <div class="tooltip">
+                                            <span class="tooltiptext">Upload an Image < 2MB</span> 
+                                        </div> 
                                     </span>
-                                </span>
-                                <span class="file-name" id="filename">
-                                    browse
-                                </span>
-                            </label>
-                        </div>
-                        <div class="buttons is-centered button-div">
-                            <span class="button" id="pictureSubmit"><a href="#bottom">Submit</a></span>
+                                                    
+                                </span> 
+                            </label> 
+                        </div> 
+                        <div class="buttons is-centered button-div">                        
+                            <span class="button" id="pictureSubmit">
+                                <a href="#bottom">Submit</a>
+                            </span>                
                         </div>
                     </div>
                 </div>
 
             </div>
         </div>
+<<<<<<< HEAD
         <!---   <div class="back"> -->
         <hr>
         
@@ -123,6 +127,97 @@
 
         <div class="back" id="bottom">
             <hr>
+=======
+            <!---   <div class="back"> -->
+            <hr>
+
+            <!-- Modal -->
+            <div class="modal fade" id="drinkModal" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-scrollable" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modalDrinkTitle">Modal title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body" id="modalDrinkFacts">
+                            ...
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" id="drinkSave" class="btn btn-primary">Save Drink</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="back" id="bottom">
+                <hr>
+
+                <!--Drink recommendation 1-->
+                <div class="row justify-content-center justify-content-around drinks invisible">
+                    <div class="column">
+                        <div class="card drink" style="width: 18rem;">
+
+                            <div class="card-body">
+                                <h5 class="card-title" id="moodNamePrimary">Mood 1</h5>
+                                <p class="card-text" id="moodTextOne">Some quick example text to build on the card title
+                                    and make
+                                    up the
+                                    bulk
+                                    of
+                                    the
+                                    card's content.</p>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                    <div class="img-hover-zoom img-hover-zoom--brightness img" id="drinkOneRandOne">
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
+                                    <div class="img-hover-zoom img-hover-zoom--brightness img" id="drinkOneRandTwo">
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
+                                    <div class="img-hover-zoom img-hover-zoom--brightness img" id="drinkOneRandThree">
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+
+                    <!--Drink recommendation 2-->
+                    <!-- <div class="row"> -->
+                    <div class="column">
+                        <div class="card drink" style="width: 18rem;">
+                            <div class="card-body">
+                                <h5 class="card-title" id="moodName2">Mood 2</h5>
+                                <p class="card-text" id="moodTextTwo">Some quick example text to build on the card title
+                                    and make
+                                    up
+                                    the bulk of
+                                    the
+                                    card's content.</p>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                    <div class="img-hover-zoom img-hover-zoom--brightness img" id="drinkTwoRandOne">
+                                    </div>
+                                </li>
+
+                                <li class="list-group-item">
+                                    <div class="img-hover-zoom img-hover-zoom--brightness img" id="drinkTwoRandTwo">
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
+                                    <div class="img-hover-zoom img-hover-zoom--brightness img" id="drinkTwoRandThree">
+                                    </div>
+                                </li>
+                            </ul>
+>>>>>>> a9f2536a2835e0fa83d83dd63feb02169dc3fc4d
 
             <!--Drink recommendation 1-->
             <div class="row justify-content-center justify-content-around drinks invisible">
@@ -154,6 +249,7 @@
                             </li>
                         </ul>
                     </div>
+<<<<<<< HEAD
                 </div>
                 <!--Drink recommendation 2-->
                 <!-- <div class="row"> -->
@@ -183,6 +279,37 @@
                                 </div>
                             </li>
                         </ul>
+=======
+                    <!-- </div> -->
+
+                    <!--Drink recommendation 3-->
+                    <!-- <div class="row"> -->
+                    <div class="column">
+                        <div class="card drink" style="width: 18rem;">
+                            <div class="card-body">
+                                <h5 class="card-title" id="moodName3">Mood 3</h5>
+                                <p class="card-text" id="moodTextThree">Some quick example text to build on the card
+                                    title and make
+                                    up
+                                    the bulk of
+                                    the
+                                    card's content.</p>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                    <div class="img-hover-zoom img-hover-zoom--brightness img" id="drinkThreeRandOne">
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
+                                    <div class="img-hover-zoom img-hover-zoom--brightness img" id="drinkThreeRandTwo">
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
+                                    <div class="img-hover-zoom img-hover-zoom--brightness img" id="drinkThreeRandThree">
+                                    </div>
+                                </li>
+                            </ul>
+>>>>>>> a9f2536a2835e0fa83d83dd63feb02169dc3fc4d
 
                     </div>
                 </div>
