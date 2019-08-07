@@ -34,7 +34,7 @@ const emotionKey = {
     fear: ["tequila", "Nothing ~screams~ fear like 20 shots of tequila.."],
     happiness: ["rum", "Ever wonder how Captain Jack Sparrow is always so happy?"],
     neutral: ["gin", "So neutral you'd think it's from Switzerland"],
-    sadness: ["whiskey", "Pair this with a country song and you'll cry all night"],
+    sadness: ["bourbon", "Pair this with a country song and you'll cry all night"],
     surprise: ["champagne", "To be clear, champagne is for good surprises.."]
 };
 
@@ -322,9 +322,9 @@ $(document).on("click", ".text", function (e) {
 
     $("#drinkModal").modal("show");
     renderIns(drinkID);
-    if (confirm("Save Drink?") === true) {
-        localStorage.setItem("drinkID", drinkID);
-    };
+   // if (confirm("Save Drink?") === true) {
+     //   localStorage.setItem("drinkID", drinkID);
+    //};
 });
 
 function renderSavedDrinks(list) {
