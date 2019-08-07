@@ -16,7 +16,7 @@
     top: 0;
     right: 0;
     left: 0;
-    z-index: 1030;
+    z-index: 103;
     background: rgba(0, 0, 0, 0.651);;
     box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
 
@@ -61,9 +61,82 @@
     text-align: center;
 }
 
+ 
+  .middle {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+  } 
+
+/* Brightness-zoom Container */
+.img-hover-zoom--brightness img {
+    transition: transform 1.5s, filter 1.5s ease-in-out;
+    transform-origin: center center;
+    filter: brightness(70%);
+    backface-visibility: hidden
+  }
+  
+  /* The Transformation */
+  .img-hover-zoom--brightness:hover img {
+    filter: brightness(100%);
+    transform: scale(1.1);
+  }
+/* The Image container */
+.img-hover-zoom {
+    height: 165px;
+    overflow: hidden; /* Removing this will break the effects */
+  }
+  img {
+      height: 165px;
+      width: 165px;
+      border-radius: 5%;
+  }
+  .img-hover-zoom--brightness:hover img {
+    opacity: 0.9;
+  }
+  
+  .img-hover-zoom--brightness:hover .middle {
+    opacity: 0.70;
+  }
+  
+  .text {
+    background-color: rgb(119, 129, 120);
+    color: white;
+    font-size: 18px;
+    padding: 16px 16px;
+  }
 /* #spacer { */
     /* height:200px; */
     /* width: 100%; */
 /* } */
+
+#drinkModal{
+    z-index: 20000;
+}
+
+.modal.ageConfirm {
+    z-index: 1100;
+}
+
+.modal-background.ageConfirm {
+    background-image: url("http://tequilacowboy.com/wp-content/uploads/2015/11/bg-wood.jpg");
+}
+
+.modal-content.ageConfirm {
+    background: black;
+    color: white;
+    height: 960px;
+    width: 720px;
+    line-height: 140px;
+    font-size: 48px;
+}
+#ageYoN {
+    margin: 40px;
+}
 
 
