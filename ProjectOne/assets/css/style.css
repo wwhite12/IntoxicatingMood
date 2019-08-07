@@ -9,7 +9,8 @@
 
 .title {
     text-align: center;
-    height: 200px;
+    height: 150px;
+    padding: 25px 0px 0px 0px;
     position: fixed;
     color: white;
     top: 0;

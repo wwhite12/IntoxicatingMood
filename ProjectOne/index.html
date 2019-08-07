@@ -66,46 +66,6 @@
 
     <main>
 
-        <!--- updated classes and reorganized divs
-        <div class="form-group">
-            <label for="exampleFormControlSelect1">Select Emotion</label>
-            <select class="form-control" id="emotionOne">
-                <option>sadness</option>
-                <option>fear</option>
-                <option>disgust</option>
-                <option>happiness</option>
-                <option>surprise</option>
-                <option>neutral</option>
-                <option>anger</option>
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label for="exampleFormControlSelect1">Select Emotion</label>
-            <select class="form-control" id="emotionTwo">
-                <option>sadness</option>
-                <option>fear</option>
-                <option>disgust</option>
-                <option>happiness</option>
-                <option>surprise</option>
-                <option>neutral</option>
-                <option>anger</option>
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label for="exampleFormControlSelect1">Select Emotion</label>
-            <select class="form-control" id="emotionThree">
-                <option>sadness</option>
-                <option>fear</option>
-                <option>disgust</option>
-                <option>happiness</option>
-                <option>surprise</option>
-                <option>neutral</option>
-                <option>anger</option>
-            </select>
-        </div>
-    -->
         <div class="background">
 
             <!--Submit Photo Here-->
@@ -139,137 +99,138 @@
 
             </div>
         </div>
-            <!---   <div class="back"> -->
+
+        <!---   <div class="back"> -->
+        <hr>
+        
+        <div class="modal fade" id="drinkModal" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalDrinkTitle">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" id="modalDrinkFacts">
+                        ...
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" id="drinkSave" class="btn btn-primary">Save Drink</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="back" id="bottom">
             <hr>
 
-            <!-- Modal -->
-            <div class="modal fade" id="drinkModal" tabindex="-1" role="dialog"
-                aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-scrollable" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="modalDrinkTitle">Modal title</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
+
+            <!--Drink recommendation 1-->
+            <div class="row justify-content-center justify-content-around drinks invisible">
+                <div class="column">
+                    <div class="card drink" style="width: 18rem;">
+
+                        <div class="card-body">
+                            <h5 class="card-title" id="moodNamePrimary">Mood 1</h5>
+                            <p class="card-text" id="moodTextOne">Some quick example text to build on the card title and
+                                make
+                                up the
+                                bulk
+                                of
+                                the
+                                card's content.</p>
                         </div>
-                        <div class="modal-body" id="modalDrinkFacts">
-                            ...
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <div class="img-hover-zoom img-hover-zoom--brightness img" id="drinkOneRandOne">
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="img-hover-zoom img-hover-zoom--brightness img" id="drinkOneRandTwo">
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="img-hover-zoom img-hover-zoom--brightness img" id="drinkOneRandThree">
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+                <!--Drink recommendation 2-->
+                <!-- <div class="row"> -->
+                <div class="column">
+                    <div class="card drink" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title" id="moodName2">Mood 2</h5>
+                            <p class="card-text" id="moodTextTwo">Some quick example text to build on the card title and
+                                make
+                                up
+                                the bulk of
+                                the
+                                card's content.</p>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" id="drinkSave" class="btn btn-primary">Save Drink</button>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <div class="img-hover-zoom img-hover-zoom--brightness img" id="drinkTwoRandOne">
+                                </div>
+                            </li>
+
+                            <li class="list-group-item">
+                                <div class="img-hover-zoom img-hover-zoom--brightness img" id="drinkTwoRandTwo">
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="img-hover-zoom img-hover-zoom--brightness img" id="drinkTwoRandThree">
+                                </div>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+                <!-- </div> -->
+
+                <!--Drink recommendation 3-->
+                <!-- <div class="row"> -->
+                <div class="column">
+                    <div class="card drink" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title" id="moodName3">Mood 3</h5>
+                            <p class="card-text" id="moodTextThree">Some quick example text to build on the card title
+                                and make
+                                up
+                                the bulk of
+                                the
+                                card's content.</p>
                         </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <div class="img-hover-zoom img-hover-zoom--brightness img" id="drinkThreeRandOne">
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="img-hover-zoom img-hover-zoom--brightness img" id="drinkThreeRandTwo">
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="img-hover-zoom img-hover-zoom--brightness img" id="drinkThreeRandThree">
+                                </div>
+                            </li>
+                        </ul>
+
                     </div>
                 </div>
             </div>
 
-            <div class="back" id="bottom">
-                <hr>
 
-                <!--Drink recommendation 1-->
-                <div class="row justify-content-center justify-content-around drinks invisible">
-                    <div class="column">
-                        <div class="card drink" style="width: 18rem;">
-
-                            <div class="card-body">
-                                <h5 class="card-title" id="moodNamePrimary">Mood 1</h5>
-                                <p class="card-text" id="moodTextOne">Some quick example text to build on the card title
-                                    and make
-                                    up the
-                                    bulk
-                                    of
-                                    the
-                                    card's content.</p>
-                            </div>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">
-                                    <div class="img-hover-zoom img-hover-zoom--brightness img" id="drinkOneRandOne">
-                                    </div>
-                                </li>
-                                <li class="list-group-item">
-                                    <div class="img-hover-zoom img-hover-zoom--brightness img" id="drinkOneRandTwo">
-                                    </div>
-                                </li>
-                                <li class="list-group-item">
-                                    <div class="img-hover-zoom img-hover-zoom--brightness img" id="drinkOneRandThree">
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-
-
-                    <!--Drink recommendation 2-->
-                    <!-- <div class="row"> -->
-                    <div class="column">
-                        <div class="card drink" style="width: 18rem;">
-                            <div class="card-body">
-                                <h5 class="card-title" id="moodName2">Mood 2</h5>
-                                <p class="card-text" id="moodTextTwo">Some quick example text to build on the card title
-                                    and make
-                                    up
-                                    the bulk of
-                                    the
-                                    card's content.</p>
-                            </div>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">
-                                    <div class="img-hover-zoom img-hover-zoom--brightness img" id="drinkTwoRandOne">
-                                    </div>
-                                </li>
-
-                                <li class="list-group-item">
-                                    <div class="img-hover-zoom img-hover-zoom--brightness img" id="drinkTwoRandTwo">
-                                    </div>
-                                </li>
-                                <li class="list-group-item">
-                                    <div class="img-hover-zoom img-hover-zoom--brightness img" id="drinkTwoRandThree">
-                                    </div>
-                                </li>
-                            </ul>
-
-                        </div>
-                    </div>
-                    <!-- </div> -->
-
-                    <!--Drink recommendation 3-->
-                    <!-- <div class="row"> -->
-                    <div class="column">
-                        <div class="card drink" style="width: 18rem;">
-                            <div class="card-body">
-                                <h5 class="card-title" id="moodName3">Mood 3</h5>
-                                <p class="card-text" id="moodTextThree">Some quick example text to build on the card
-                                    title and make
-                                    up
-                                    the bulk of
-                                    the
-                                    card's content.</p>
-                            </div>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">
-                                    <div class="img-hover-zoom img-hover-zoom--brightness img" id="drinkThreeRandOne">
-                                    </div>
-                                </li>
-                                <li class="list-group-item">
-                                    <div class="img-hover-zoom img-hover-zoom--brightness img" id="drinkThreeRandTwo">
-                                    </div>
-                                </li>
-                                <li class="list-group-item">
-                                    <div class="img-hover-zoom img-hover-zoom--brightness img" id="drinkThreeRandThree">
-                                    </div>
-                                </li>
-                            </ul>
-
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="return">
-                    <p><a href="#top" id="top">Return To Top</a></p>
-                </div>
+            <div class="return">
+                <p><a href="#top" id="top">Return To Top</a></p>
             </div>
+        </div>
     </main>
 
 
@@ -277,6 +238,7 @@
 
 
     </footer>
+    <script type="text/javascript" src="./assets/javascript/utils.js"></script>
     <script type="text/javascript" src="./assets/javascript/app.js"></script>
 
 </body>
