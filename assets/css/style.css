@@ -1,0 +1,168 @@
+* {
+    box-sizing: border-box;
+}
+
+.photo {
+    padding-top: 250px;
+    
+}
+
+.title {
+    text-align: center;
+    height: 150px;
+    padding: 25px 0px 0px 0px;
+    position: fixed;
+    color: white;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 103;
+    background: rgba(0, 0, 0, 0.651);;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+
+    
+}
+
+.face {
+    clear: both; 
+    overflow: hidden;
+    height: 960px;
+  }
+
+.drink {
+    width: 1300px;
+    margin: 0 auto;
+    padding: 5px 40px 20px 40px;
+    margin-top: 300px;
+}
+
+
+
+
+.button-div {
+    margin: 0 auto;
+}
+
+.back {
+    background: black;
+    margin-bottom: 500px;
+    margin-top: -30px;
+
+}
+
+.background {
+    background-image: url("http://tequilacowboy.com/wp-content/uploads/2015/11/bg-wood.jpg");
+	background-repeat: no-repeat;
+    background-size: cover;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+}
+
+.return{
+    text-align: center;
+}
+
+ /*container for text fade-in on hover*/
+.middle {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+} 
+
+/* Brightness-zoom image ontainer */
+.img-hover-zoom--brightness img {
+    transition: transform 1.5s, filter 1.5s ease-in-out;
+    transform-origin: center center;
+    filter: brightness(70%);
+    backface-visibility: hidden
+  }
+  
+  /* image class transformation on hover*/
+  .img-hover-zoom--brightness:hover img {
+    filter: brightness(100%);
+    transform: scale(1.1);
+  }
+/* image container class*/
+.img-hover-zoom {
+    height: 165px;
+    overflow: hidden; 
+  }
+  img {
+      height: 165px;
+      width: 165px;
+      border-radius: 5%;
+  }
+  .img-hover-zoom--brightness:hover img {
+    opacity: 0.9;
+  }
+  
+  .img-hover-zoom--brightness:hover .middle {
+    opacity: 0.70;
+  }
+  
+  .text {
+    background-color: rgb(119, 129, 120);
+    color: white;
+    font-size: 18px;
+    padding: 16px 16px;
+  }
+/* #spacer { */
+    /* height:200px; */
+    /* width: 100%; */
+/* } */
+
+#drinkModal{
+    z-index: 20000;
+}
+
+.modal.ageConfirm {
+    z-index: 1100;
+}
+
+.modal-background.ageConfirm {
+    background-image: url("http://tequilacowboy.com/wp-content/uploads/2015/11/bg-wood.jpg");
+}
+
+.modal-content.ageConfirm {
+    background: black;
+    color: white;
+    height: 960px;
+    width: 720px;
+    line-height: 140px;
+    font-size: 48px;
+}
+#ageYoN {
+    margin: 40px;
+}
+
+/* Tooltip container */
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+ 
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 1;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
