@@ -399,7 +399,7 @@ function renderIns(id) {
 
         $("#drinkSave").on("click", function () {
             console.log(id);
-            drinkIDList.push(id);
+            drinkIDList.unshift(id);
             $("#drinkModal").modal("hide");
             console.log(drinkIDList);
             localStorage.setItem("drinkIDs",JSON.stringify(drinkIDList));
